@@ -102,8 +102,12 @@ public class Point implements Comparable<Point> {
      */
     public Comparator<Point> slopeOrder() {
         /* YOUR CODE HERE */
+        return new Comparator<Point>() {
+            public int compare(Point o1, Point o2) {
+                return Double.compare(slopeTo(o1), slopeTo(o2));
+            }
+        };
     }
-
 
     /**
      * Returns a string representation of this point.
