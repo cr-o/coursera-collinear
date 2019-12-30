@@ -22,7 +22,7 @@ public class BruteCollinearPoints {
         this.points = points;
         for (int i = 0; i < 4; i++) {
             for (int n = 0; n < i; n++) {
-                if (n != i && points[n].equals(points[i])) {
+                if (n != i && points[n].compareTo(points[i]) == 0) {
                     throw new IllegalArgumentException("illegal duplicate point argument");
                 }
             }
@@ -37,20 +37,40 @@ public class BruteCollinearPoints {
 
     // the line segments
     public LineSegment[] segments() {
-        LineSegment ls[];
-        Comparator<Point> comparator = points[0].slopeOrder();
-        int result = comparator.compare(this.points[2], this.points[3]);
-        // compare bcf's 1-2 and 2-3
-        // if they are different, add to line segment array
-        // if they are the same, don't add. compare 3-4 and 1-4
-        ls = new LineSegment[2]; // placeholder. only add to array if conditions met.
+        LineSegment ls[] = new LineSegment[6];
 
+        Comparator<Point> comparator = points[0].slopeOrder();
+        int result = comparator.compare(this.points[1], this.points[2]);
+        if (result != 0) {
+            ls[0] = new LineSegment(this.points[0], this.points[1]);
+            ls[1] = new LineSegment(this.points[0], this.points[2]);
+        }
+        else {
+            Comparator<Point> secComparator = points[3].slopeOrder();
+            int resultTwo = secComparator.compare(this.points[0], this.points[1]);
+            if (resultTwo != 0) {
+                ls[2] = new LineSegment(this.points[3], this.points[0]);
+                ls[3] = new LineSegment(this.points[3], this.points[1]);
+            }
+            else {
+                Comparator<Point> thirdComparator = points[2].slopeOrder();
+                int resultThree = thirdComparator.compare(this.points[1], this.points[3]);
+                if (resultThree != 0) {
+                    ls[4] = new LineSegment(this.points[2], this.points[1]);
+                    ls[5] = new LineSegment(this.points[2], this.points[3]);
+                }
+                else {
+                    ls[0] = new LineSegment(this.points[0], this.points[3]);
+                }
+            }
+        }
         return ls;
     }
 
     public static void main(String[] args) {
         // read the n points from a file
         In in = new In(args[0]);
+        int n = in.readInt();
         Point[] points = new Point[n];
         for (int i = 0; i < 4; i++) {
             int x = in.readInt();
