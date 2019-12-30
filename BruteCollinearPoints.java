@@ -16,7 +16,7 @@ public class BruteCollinearPoints {
     private Point points[];
 
     public BruteCollinearPoints(Point[] points) {
-        if (points == null && points.length != 4) {
+        if (points.length == 0) {
             throw new IllegalArgumentException("illegal point argument");
         }
         this.points = points;
@@ -27,7 +27,6 @@ public class BruteCollinearPoints {
                 }
             }
         }
-        bcf = new BruteCollinearPoints(points);
     }
 
     // the number of line segments
@@ -72,7 +71,7 @@ public class BruteCollinearPoints {
         In in = new In(args[0]);
         int n = in.readInt();
         Point[] points = new Point[n];
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < n; i++) {
             int x = in.readInt();
             int y = in.readInt();
             points[i] = new Point(x, y);
