@@ -8,31 +8,44 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
+import java.util.Comparator;
+
 public class BruteCollinearPoints {
     // finds all line segments containing 4 points
+    private BruteCollinearPoints bcf;
+    private Point points[];
+
     public BruteCollinearPoints(Point[] points) {
         if (points == null && points.length != 4) {
             throw new IllegalArgumentException("illegal point argument");
         }
+        this.points = points;
         for (int i = 0; i < 4; i++) {
             for (int n = 0; n < i; n++) {
-                if (points[n].equals(points[i])) {
+                if (n != i && points[n].equals(points[i])) {
                     throw new IllegalArgumentException("illegal duplicate point argument");
                 }
             }
         }
-        BruteCollinearPoints bcf = new BruteCollinearPoints(points);
+        bcf = new BruteCollinearPoints(points);
     }
 
     // the number of line segments
     public int numberOfSegments() {
-        return (segments().length);
+        return (segments().length); // if this is one, then all four points are collinear
     }
 
     // the line segments
     public LineSegment[] segments() {
-        LineSegment ls[] = new LineSegment[4];
-        return
+        LineSegment ls[];
+        Comparator<Point> comparator = points[0].slopeOrder();
+        int result = comparator.compare(this.points[2], this.points[3]);
+        // compare bcf's 1-2 and 2-3
+        // if they are different, add to line segment array
+        // if they are the same, don't add. compare 3-4 and 1-4
+        ls = new LineSegment[2]; // placeholder. only add to array if conditions met.
+
+        return ls;
     }
 
     public static void main(String[] args) {
