@@ -20,9 +20,9 @@ public class BruteCollinearPoints {
             throw new IllegalArgumentException("illegal point argument");
         }
         this.points = points;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < this.points.length; i++) {
             for (int n = 0; n < i; n++) {
-                if (n != i && points[n].compareTo(points[i]) == 0) {
+                if (points[n].compareTo(points[i]) == 0) {
                     throw new IllegalArgumentException("illegal duplicate point argument");
                 }
             }
@@ -31,7 +31,7 @@ public class BruteCollinearPoints {
 
     // the number of line segments
     public int numberOfSegments() {
-        return (segments().length); // if this is one, then all four points are collinear
+        return segments().length; // if this is one, then all four points are collinear
     }
 
     // the line segments
