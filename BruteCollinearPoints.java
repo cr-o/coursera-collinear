@@ -8,12 +8,12 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
-import java.util.Comparator;
+import java.util.ArrayList;
 
 public class BruteCollinearPoints {
     // finds all line segments containing 4 points
     private BruteCollinearPoints bcf;
-    private Point points[];
+    private Point[] points;
 
     public BruteCollinearPoints(Point[] points) {
         if (points.length == 0) {
@@ -36,34 +36,22 @@ public class BruteCollinearPoints {
 
     // the line segments
     public LineSegment[] segments() {
-        LineSegment ls[] = new LineSegment[6];
-
-        Comparator<Point> comparator = points[0].slopeOrder();
-        int result = comparator.compare(this.points[1], this.points[2]);
-        if (result != 0) {
-            ls[0] = new LineSegment(this.points[0], this.points[1]);
-            ls[1] = new LineSegment(this.points[0], this.points[2]);
-        }
-        else {
-            Comparator<Point> secComparator = points[3].slopeOrder();
-            int resultTwo = secComparator.compare(this.points[0], this.points[1]);
-            if (resultTwo != 0) {
-                ls[2] = new LineSegment(this.points[3], this.points[0]);
-                ls[3] = new LineSegment(this.points[3], this.points[1]);
-            }
-            else {
-                Comparator<Point> thirdComparator = points[2].slopeOrder();
-                int resultThree = thirdComparator.compare(this.points[1], this.points[3]);
-                if (resultThree != 0) {
-                    ls[4] = new LineSegment(this.points[2], this.points[1]);
-                    ls[5] = new LineSegment(this.points[2], this.points[3]);
-                }
-                else {
-                    ls[0] = new LineSegment(this.points[0], this.points[3]);
+        ArrayList<LineSegment> arrayList = new ArrayList<LineSegment>();
+        int pointsLength = this.points.length;
+        for (int i = 0; i < pointsLength; i++) {
+            for (int j = 0; j < pointsLength; j++) {
+                for (int k = 0; k < pointsLength; k++) {
+                    for (int m = 0; m < pointsLength; m++) {
+                        double firstSlope = this.points[i].slopeTo(this.points[j]);
+                        if (firstSlope == this.points[i].slopeTo(this.points[k])
+                                && firstSlope == this.points[k].slopeTo(this.points[m])) {
+                            arrayList.add(new LineSegment(this.points[i], this.points[m]));
+                        }
+                    }
                 }
             }
         }
-        return ls;
+        return arrayList.toArray(new LineSegment[arrayList.size()]);
     }
 
     public static void main(String[] args) {
