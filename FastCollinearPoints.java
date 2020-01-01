@@ -9,6 +9,7 @@ import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FastCollinearPoints {
     // finds all line segments containing 4 or more points
@@ -35,23 +36,41 @@ public class FastCollinearPoints {
 
     // the line segments
     public LineSegment[] segments() {
-        ArrayList<LineSegment> arrayList = new ArrayList<LineSegment>();
+        private class pointWithOriginSlope {
+            public pointWithOriginSlope(Point point, double slopeToOrigin) {
+
+            }
+        }
+        ArrayList<Double> arrayList = new ArrayList<Double>();
         /*
-        A faster, sorting-based solution. Remarkably, it is possible to solve the problem much faster than the brute-force solution described above. Given a point p, the following method determines whether p participates in a set of 4 or more collinear points.
+A faster, sorting-based solution. Remarkably, it is possible to solve the problem much faster than the brute-force solution described above. Given a point p, the following method determines whether p participates in a set of 4 or more collinear points.
 
 Think of p as the origin.
+
 For each other point q, determine the slope it makes with p.
+
 Sort the points according to the slopes they makes with p.
+
 Check if any 3 (or more) adjacent points in the sorted order have equal slopes with respect to p. If so, these points, together with p, are collinear.
+
 Applying this method for each of the n points in turn yields an efficient algorithm to the problem. The algorithm solves the problem because points that have equal slopes with respect to p are collinear, and sorting brings such points together. The algorithm is fast because the bottleneck operation is sorting.
          */
         int pointsLength = this.points.length;
         for (int i = 0; i < pointsLength; i++) {
-            for (int j = 0; j < pointsLength; j++) {
-                this.points[]
+            for (int j = i; j < pointsLength; j++) {
+                if (j != 0) {
+                    arrayList.add(this.points[i].slopeTo(this.points[j]));
+                }
             }
         }
-        return arrayList.toArray(new LineSegment[arrayList.size()]);
+        Double[] slopes = arrayList.toArray(new Double[arrayList.size()]);
+        Arrays.sort(slopes);
+
+        ArrayList<Double> slopeList = new ArrayList<Double>();
+
+        for (int n = slopes.length; n > 0; n--) {
+
+        }
     }
 
     public static void main(String[] args) {
