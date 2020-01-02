@@ -10,10 +10,11 @@ import edu.princeton.cs.algs4.StdOut;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class FastCollinearPoints {
     // finds all line segments containing 4 or more points
-    Point[] points;
+    private Point[] points;
 
     public FastCollinearPoints(Point[] points) {
         if (points.length == 0) {
@@ -34,14 +35,22 @@ public class FastCollinearPoints {
         return segments().length;
     }
 
+    private class PointWithOriginSlope {
+        private Point origin;
+        private Point point;
+        private double slopeToOrigin;
+
+        public PointWithOriginSlope(Point origin, Point point, double slopeToOrigin) {
+            this.origin = origin;
+            this.point = point;
+            this.slopeToOrigin = slopeToOrigin;
+        }
+    }
+
     // the line segments
     public LineSegment[] segments() {
-        private class pointWithOriginSlope {
-            public pointWithOriginSlope(Point point, double slopeToOrigin) {
 
-            }
-        }
-        ArrayList<Double> arrayList = new ArrayList<Double>();
+        ArrayList<PointWithOriginSlope> arrayList = new ArrayList<PointWithOriginSlope>();
         /*
 A faster, sorting-based solution. Remarkably, it is possible to solve the problem much faster than the brute-force solution described above. Given a point p, the following method determines whether p participates in a set of 4 or more collinear points.
 
@@ -56,21 +65,48 @@ Check if any 3 (or more) adjacent points in the sorted order have equal slopes w
 Applying this method for each of the n points in turn yields an efficient algorithm to the problem. The algorithm solves the problem because points that have equal slopes with respect to p are collinear, and sorting brings such points together. The algorithm is fast because the bottleneck operation is sorting.
          */
         int pointsLength = this.points.length;
-        for (int i = 0; i < pointsLength; i++) {
-            for (int j = i; j < pointsLength; j++) {
+        for (int i = 0; i < pointsLength; i++) { // origin
+            for (int j = i; j < pointsLength; j++) { // other point
                 if (j != 0) {
-                    arrayList.add(this.points[i].slopeTo(this.points[j]));
+                    PointWithOriginSlope ptOrigin = new PointWithOriginSlope(this.points[i],
+                                                                             this.points[j],
+                                                                             this.points[i].slopeTo(
+                                                                                     this.points[j]));
+                    arrayList.add(ptOrigin);
                 }
             }
         }
-        Double[] slopes = arrayList.toArray(new Double[arrayList.size()]);
-        Arrays.sort(slopes);
+        PointWithOriginSlope[] slopes = arrayList
+                .toArray(new PointWithOriginSlope[arrayList.size()]);
 
-        ArrayList<Double> slopeList = new ArrayList<Double>();
 
-        for (int n = slopes.length; n > 0; n--) {
-
+        Arrays.sort(slopes, new Comparator<PointWithOriginSlope>() {
+            public int compare(PointWithOriginSlope p1, PointWithOriginSlope p2) {
+                return Double.compare(p1.slopeToOrigin, p2.slopeToOrigin);
+            }
+        });
+        int currCount = 0;
+        double prevSlope = 0.0;
+        ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
+        for (int n = 0; n < slopes.length; n++) {
+            if (n == 0) {
+                prevSlope = slopes[0].slopeToOrigin;
+            }
+            else {
+                if (slopes[n].slopeToOrigin == prevSlope) {
+                    currCount += 1;
+                    if (currCount >= 3 && !lineSegments
+                            .contains(new LineSegment(slopes[n].origin, slopes[n].point))) {
+                        lineSegments.add(new LineSegment(slopes[n].origin, slopes[n].point));
+                    }
+                }
+                else {
+                    currCount = 0;
+                }
+            }
+            prevSlope = slopes[n].slopeToOrigin;
         }
+        return lineSegments.toArray(new LineSegment[lineSegments.size()]);
     }
 
     public static void main(String[] args) {
