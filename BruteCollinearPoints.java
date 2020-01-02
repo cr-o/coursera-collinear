@@ -37,10 +37,10 @@ public class BruteCollinearPoints {
     public LineSegment[] segments() {
         ArrayList<LineSegment> arrayList = new ArrayList<LineSegment>();
         int pointsLength = this.points.length;
-        for (int i = 0; i < pointsLength; i++) {
-            for (int j = 0; j < pointsLength; j++) {
-                for (int k = 0; k < pointsLength; k++) {
-                    for (int m = 0; m < pointsLength; m++) {
+        for (int i = 0; i < pointsLength - 3; i++) {
+            for (int j = 1; j < pointsLength - 2; j++) {
+                for (int k = 2; k < pointsLength - 1; k++) {
+                    for (int m = 3; m < pointsLength; m++) {
                         if (i != j && j != k && k != m) {
                             double firstSlope = this.points[i].slopeTo(this.points[j]);
                             if (firstSlope == this.points[i].slopeTo(this.points[k])
@@ -77,11 +77,27 @@ public class BruteCollinearPoints {
         StdDraw.show();
 
         // print and draw the line segments
-        BruteCollinearPoints collinear = new BruteCollinearPoints(points);
-        for (LineSegment segment : collinear.segments()) {
-            StdOut.println(segment);
-            segment.draw();
+        int counter = 0;
+        Point[] toUse = new Point[4];
+        while (counter != points.length) {
+            int it = 0;
+            for (int m = counter; m < counter + 4; m++) {
+                toUse[it] = points[m];
+
+                StdDraw.show();
+                it++;
+                if (it % 4 == 0) {
+                    it = 0;
+                    BruteCollinearPoints collinear = new BruteCollinearPoints(toUse);
+                    for (LineSegment segment : collinear.segments()) {
+                        StdOut.println(segment);
+                        segment.draw();
+                    }
+                    toUse = new Point[4];
+                }
+            }
+            counter += 4;
         }
-        StdDraw.show();
+
     }
 }
