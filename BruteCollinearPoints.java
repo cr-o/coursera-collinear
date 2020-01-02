@@ -14,7 +14,6 @@ import java.util.Comparator;
 
 public class BruteCollinearPoints {
     // finds all line segments containing 4 points
-    private BruteCollinearPoints bcf;
     private Point[] points;
 
     public BruteCollinearPoints(Point[] points) {
@@ -55,11 +54,11 @@ public class BruteCollinearPoints {
     public LineSegment[] segments() {
         ArrayList<PointWithOriginSlope> arrayList = new ArrayList<PointWithOriginSlope>();
         int pointsLength = this.points.length;
-        for (int i = 0; i < pointsLength; i++) {
-            for (int j = 0; j < pointsLength; j++) {
-                for (int k = 0; k < pointsLength; k++) {
+        for (int i = 0; i < pointsLength - 3; i++) {
+            for (int j = 0; j < pointsLength - 2; j++) {
+                for (int k = 0; k < pointsLength - 1; k++) {
                     for (int m = 0; m < pointsLength; m++) {
-                        if (i != j && i != k && j != m) {
+                        if (i != j && j != k && k != m) {
                             double firstSlope = this.points[i].slopeTo(this.points[j]);
                             if (firstSlope == this.points[i].slopeTo(this.points[k])
                                     && firstSlope == this.points[k].slopeTo(this.points[m])) {
@@ -122,11 +121,27 @@ public class BruteCollinearPoints {
         StdDraw.show();
 
         // print and draw the line segments
-        BruteCollinearPoints collinear = new BruteCollinearPoints(points);
-        for (LineSegment segment : collinear.segments()) {
-            StdOut.println(segment);
-            segment.draw();
+        int counter = 0;
+        Point[] toUse = new Point[4];
+        while (counter != points.length) {
+            int it = 0;
+            for (int m = counter; m < counter + 4; m++) {
+                toUse[it] = points[m];
+
+                StdDraw.show();
+                it++;
+                if (it % 4 == 0) {
+                    it = 0;
+                    BruteCollinearPoints collinear = new BruteCollinearPoints(toUse);
+                    for (LineSegment segment : collinear.segments()) {
+                        StdOut.println(segment);
+                        segment.draw();
+                    }
+                    toUse = new Point[4];
+                }
+            }
+            counter += 4;
         }
-        StdDraw.show();
+
     }
 }
