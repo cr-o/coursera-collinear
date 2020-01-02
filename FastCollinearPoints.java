@@ -67,11 +67,7 @@ public class FastCollinearPoints {
                 .toArray(new PointWithOriginSlope[arrayList.size()]);
 
 
-        Arrays.sort(slopes, new Comparator<PointWithOriginSlope>() {
-            public int compare(PointWithOriginSlope p1, PointWithOriginSlope p2) {
-                return Double.compare(p1.slopeToOrigin, p2.slopeToOrigin);
-            }
-        });
+        Arrays.sort(slopes, slopeComparator());
         int currCount = 0;
         double prevSlope = 0.0;
         ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
@@ -94,6 +90,14 @@ public class FastCollinearPoints {
             prevSlope = slopes[n].slopeToOrigin;
         }
         return lineSegments.toArray(new LineSegment[lineSegments.size()]);
+    }
+
+    private Comparator<PointWithOriginSlope> slopeComparator() {
+        return new Comparator<PointWithOriginSlope>() {
+            public int compare(PointWithOriginSlope p1, PointWithOriginSlope p2) {
+                return Double.compare(p1.slopeToOrigin, p2.slopeToOrigin);
+            }
+        };
     }
 
     public static void main(String[] args) {

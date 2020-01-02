@@ -9,6 +9,8 @@ import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class BruteCollinearPoints {
     // finds all line segments containing 4 points
@@ -22,7 +24,10 @@ public class BruteCollinearPoints {
         this.points = points;
         for (int i = 0; i < this.points.length; i++) {
             for (int n = 0; n < i; n++) {
-                if (points[n].compareTo(points[i]) == 0) {
+                if (points[i] == null) {
+                    throw new IllegalArgumentException("null point argument");
+                }
+                if (n != i && points[n].compareTo(points[i]) == 0) {
                     throw new IllegalArgumentException("illegal duplicate point argument");
                 }
             }
@@ -34,9 +39,21 @@ public class BruteCollinearPoints {
         return segments().length; // if this is one, then all four points are collinear
     }
 
+    private class PointWithOriginSlope {
+        private Point origin;
+        private Point point;
+        private double slopeToOrigin;
+
+        public PointWithOriginSlope(Point origin, Point point, double slopeToOrigin) {
+            this.origin = origin;
+            this.point = point;
+            this.slopeToOrigin = slopeToOrigin;
+        }
+    }
+
     // the line segments
     public LineSegment[] segments() {
-        ArrayList<LineSegment> arrayList = new ArrayList<LineSegment>();
+        ArrayList<PointWithOriginSlope> arrayList = new ArrayList<PointWithOriginSlope>();
         int pointsLength = this.points.length;
         for (int i = 0; i < pointsLength; i++) {
             for (int j = 0; j < pointsLength; j++) {
@@ -46,7 +63,8 @@ public class BruteCollinearPoints {
                             double firstSlope = this.points[i].slopeTo(this.points[j]);
                             if (firstSlope == this.points[i].slopeTo(this.points[k])
                                     && firstSlope == this.points[k].slopeTo(this.points[m])) {
-                                arrayList.add(new LineSegment(this.points[i], this.points[m]));
+                                arrayList.add(new PointWithOriginSlope(this.points[i],
+                                                                       this.points[m], firstSlope));
                             }
                         }
 
@@ -54,7 +72,33 @@ public class BruteCollinearPoints {
                 }
             }
         }
-        return arrayList.toArray(new LineSegment[arrayList.size()]);
+        PointWithOriginSlope[] origins = arrayList
+                .toArray(new PointWithOriginSlope[arrayList.size()]);
+
+        // sort the values by origin point
+        Arrays.sort(origins, slopeComparator());
+
+        for (int p = 0; p < origins.length; p++) {
+
+        }
+
+
+    }
+
+    private Comparator<PointWithOriginSlope> originComparator() {
+        return new Comparator<PointWithOriginSlope>() {
+            public int compare(PointWithOriginSlope p1, PointWithOriginSlope p2) {
+                return p1.origin.compareTo(p2.origin);
+            }
+        };
+    }
+
+    private Comparator<PointWithOriginSlope> slopeComparator() {
+        return new Comparator<PointWithOriginSlope>() {
+            public int compare(PointWithOriginSlope p1, PointWithOriginSlope p2) {
+                return Double.compare(p1.slopeToOrigin, p2.slopeToOrigin);
+            }
+        };
     }
 
     public static void main(String[] args) {
