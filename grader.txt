@@ -1,3 +1,10 @@
+See the Assessment Guide for information on how to interpret this report.
+
+ASSESSMENT SUMMARY
+
+Compilation:  PASSED
+API:          PASSED
+
 Spotbugs:     FAILED (11 warnings)
 PMD:          FAILED (10 warnings)
 Checkstyle:   FAILED (0 errors, 1 warning)
@@ -13,9 +20,9 @@ ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
-3.0K Jan  2 04:47 BruteCollinearPoints.java
-4.4K Jan  2 04:47 FastCollinearPoints.java
-4.2K Jan  2 04:47 Point.java
+3.5K Jan  2 06:07 BruteCollinearPoints.java
+4.4K Jan  2 06:07 FastCollinearPoints.java
+4.2K Jan  2 06:07 Point.java
 
 
 ********************************************************************************
@@ -182,7 +189,7 @@ The inputs satisfy the following conditions:
 Test 1: points from a file
   * filename = input8.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (7000, 3000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (10000, 0)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -193,7 +200,7 @@ Test 1: points from a file
 
   * filename = equidistant.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (0, 10000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (10000, 0)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -204,7 +211,7 @@ Test 1: points from a file
 
   * filename = input40.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (10000, 28000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (1000, 17000)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -215,7 +222,7 @@ Test 1: points from a file
 
   * filename = input48.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (22000, 9000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (26000, 27000)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -229,7 +236,7 @@ Test 1: points from a file
 Test 2a: points from a file with horizontal line segments
   * filename = horizontal5.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (5067, 14118)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (7453, 14118)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -240,7 +247,7 @@ Test 2a: points from a file with horizontal line segments
 
   * filename = horizontal25.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (18005, 13870)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (19459, 13870)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -254,7 +261,7 @@ Test 2a: points from a file with horizontal line segments
 Test 2b: random horizontal line segments
   *  1 random horizontal line segment
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (5434, 2346)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (15824, 9692)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -265,14 +272,14 @@ Test 2b: random horizontal line segments
 
     - failed on trial 1 of 500
      4
-     20424  2346
-     14892  2346
-     15071  2346
-      5434  2346
+     15824  9692
+      4835  9692
+     14589  9692
+      4204  9692
 
   *  5 random horizontal line segments
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (11831, 16716)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (6102, 12535)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -283,30 +290,30 @@ Test 2b: random horizontal line segments
 
     - failed on trial 1 of 250
      20
-     15475 13648
-      3899 13648
-      6977 13648
-     11831 16716
-      1557 12515
-     14724 12515
-     16246 20954
-     18862 20954
-     16943 12515
-      3411 11244
-     10650 11244
-      2760 12515
-     17277 13648
-      9230 16716
-     16507 16716
-     19015 20954
-     19998 20954
-      2035 11244
-     12244 11244
-     13468 16716
+      6102 12535
+      6557  5737
+     14667  2772
+      4978 18874
+      4804  5737
+     12632 11743
+     15392 18874
+     13782 18874
+      5809 11743
+      4516 18874
+     14669  5737
+      3452  2772
+     14194 12535
+      1799 11743
+     12999 12535
+     13096 12535
+     18934  2772
+      1868 11743
+     10954  5737
+      5274  2772
 
   * 10 random horizontal line segments
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (5401, 11494)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (16202, 1632)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -319,7 +326,7 @@ Test 2b: random horizontal line segments
 
   * 15 random horizontal line segments
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (20943, 10785)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (20950, 19071)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -335,7 +342,7 @@ Test 2b: random horizontal line segments
 Test 3a: points from a file with vertical line segments
   * filename = vertical5.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (14407, 17188)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (14407, 19953)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -346,7 +353,7 @@ Test 3a: points from a file with vertical line segments
 
   * filename = vertical25.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (11585, 4132)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (11585, 5103)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -360,7 +367,7 @@ Test 3a: points from a file with vertical line segments
 Test 3b: random vertical line segments
   *  1 random vertical line segment
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (19423, 17600)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (12165, 2690)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -371,14 +378,14 @@ Test 3b: random vertical line segments
 
     - failed on trial 1 of 500
      4
-     19423 10340
-     19423  6021
-     19423  8557
-     19423 17600
+     12165  2690
+     12165  6040
+     12165  3203
+     12165  1706
 
   *  5 random vertical line segments
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (17770, 15569)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (3014, 1713)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -389,30 +396,30 @@ Test 3b: random vertical line segments
 
     - failed on trial 1 of 250
      20
-     16667  7945
-     16943 16945
-     11506  5934
-     17770 15569
-     16943 12996
-     11506 13509
-     16667 16601
-     11506 12065
-     17770 20413
-     16943 19206
-     17770 20747
-     11506 20042
-     17770 11106
-     19217 19445
-     19217  5564
-     16943  2135
-     16667  1385
-     16667  7828
-     19217  3355
-     19217 16864
+      3014  1713
+     10996 17217
+     10996  4926
+     18758 12663
+      8959 13027
+      3014  3517
+      7961 11433
+      7961 12169
+      3014 15070
+      8959 13119
+     18758 17281
+     10996  3874
+     18758 20004
+      7961 12428
+      8959  5545
+      7961 19190
+     18758 14423
+      8959  9809
+      3014 19361
+     10996  4748
 
   * 10 random vertical line segments
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (9537, 6515)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (9777, 11552)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -425,7 +432,7 @@ Test 3b: random vertical line segments
 
   * 15 random vertical line segments
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (13849, 9542)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (9417, 6297)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -461,7 +468,7 @@ Test 6: check for dependence on either compareTo() or compare()
         positive integer, zero }
   * filename = equidistant.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (0, 10000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (10000, 0)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -472,7 +479,7 @@ Test 6: check for dependence on either compareTo() or compare()
 
   * filename = input40.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (10000, 28000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (1000, 17000)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -483,7 +490,7 @@ Test 6: check for dependence on either compareTo() or compare()
 
   * filename = input48.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (22000, 9000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (26000, 27000)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -539,7 +546,7 @@ provide access to the x- and y-coordinates).
 Test 8: random line segments, none vertical or horizontal
   *  1 random line segment
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (8332, 3539)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (6350, 9439)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -550,14 +557,14 @@ Test 8: random line segments, none vertical or horizontal
 
     - failed on trial 1 of 500
      4
-      9218  5047
-      7446  2031
-      9661  5801
-      8332  3539
+      6350  9439
+     19902  9743
+      1268  9325
+       421  9306
 
   *  5 random line segments
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (8487, 10834)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (1491, 479)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -568,30 +575,30 @@ Test 8: random line segments, none vertical or horizontal
 
     - failed on trial 1 of 250
      20
-      5627  2122
-      1261  9452
-      8747 11626
-      8487 10834
-      7590  9519
-     12175 11881
-     13726 17145
-      5861  7168
-     12296 15331
-       591  9396
-     11981 10348
-      2601  9564
-      6257 10297
-      7769 10112
-     13789 12313
-      5442  2403
-     10151 12610
-      1684  9073
-      6695  6554
-      9787 14794
+      1491   479
+      6433  9608
+     17768 18497
+      5494  9064
+     13893  9775
+     12915  8997
+     18737 19304
+      5068  5085
+     11548  9756
+     11937  8219
+      3616  7976
+      1468  2490
+      2677  7432
+      3628  4047
+      2264  5585
+      4230  5022
+      6222  8326
+     15830 16883
+      8961 12869
+      3135  1217
 
   * 10 random line segments
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (5278, 435)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (13934, 8522)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -604,7 +611,7 @@ Test 8: random line segments, none vertical or horizontal
 
   * 15 random line segments
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (17346, 16759)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (3848, 3420)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -620,7 +627,7 @@ Test 8: random line segments, none vertical or horizontal
 Test 9: random line segments
   *  1 random line segment
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (7043, 12358)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (5461, 4484)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -631,14 +638,14 @@ Test 9: random line segments
 
     - failed on trial 1 of 500
      4
-      7111 12358
-      6771 12358
-      6091 12358
-      7043 12358
+      5461  4484
+      4492  3344
+      4900  3824
+      7144  6464
 
   *  5 random line segments
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (3155, 5498)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (4226, 10015)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -649,30 +656,30 @@ Test 9: random line segments
 
     - failed on trial 1 of 250
      20
-       476  2338
-      9742  7850
-      9786  7864
-      3155  5498
-      9326 13012
-      9126 12948
-      7083 12154
-      7426 12404
-     11194  8312
-      5208  4626
-      4311  7996
-      3388  3746
-      6435 11182
-      8083 12505
-      8979 13779
-      5395  8683
-      2114  3130
-      9302  7710
-      4887  8860
-      7026 12276
+      4226 10015
+      6614 13132
+      7792  9891
+      6615  5815
+      7898  9999
+      6701  5829
+      5014  8925
+      6074 12787
+      2658 10602
+      5014  8364
+      5884  5696
+      1454  9832
+      4665  6705
+      6786 13242
+      5460  7515
+      5014  9222
+      4506 10435
+      5014  8397
+      3386  8755
+      4895  5535
 
   * 10 random line segments
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (2882, 6205)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (1967, 13259)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -685,7 +692,7 @@ Test 9: random line segments
 
   * 15 random line segments
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (8934, 14252)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (7619, 557)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -702,32 +709,14 @@ Test 10: check that data type is immutable by testing whether each method
          returns the same value, regardless of any intervening operations
   * input8.txt
 
-    java.lang.NullPointerException
-
-    BruteCollinearPoints.segments(BruteCollinearPoints.java:45)
-    TestBruteCollinearPoints.testImmutable(TestBruteCollinearPoints.java:458)
-    TestBruteCollinearPoints.testImmutable(TestBruteCollinearPoints.java:516)
-    TestBruteCollinearPoints.test10(TestBruteCollinearPoints.java:531)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:753)
-
-    - sequence of operations was:
-          BruteCollinearPoints collinear = new BruteCollinearPoints(points);
-          mutate points[] array that was passed to constructor
-          mutate points[] array that was passed to constructor
-          collinear.segments()
-
-    - failed on trial 1 of 100
-
-  * equidistant.txt
-
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (0, 10000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (10000, 0)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
     BruteCollinearPoints.numberOfSegments(BruteCollinearPoints.java:33)
     TestBruteCollinearPoints.testImmutable(TestBruteCollinearPoints.java:438)
     TestBruteCollinearPoints.testImmutable(TestBruteCollinearPoints.java:516)
-    TestBruteCollinearPoints.test10(TestBruteCollinearPoints.java:532)
+    TestBruteCollinearPoints.test10(TestBruteCollinearPoints.java:531)
     TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:753)
 
     - sequence of operations was:
@@ -736,12 +725,29 @@ Test 10: check that data type is immutable by testing whether each method
 
     - failed on trial 1 of 100
 
+  * equidistant.txt
+
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (10000, 0)
+
+    LineSegment.<init>(LineSegment.java:20)
+    BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
+    TestBruteCollinearPoints.testImmutable(TestBruteCollinearPoints.java:458)
+    TestBruteCollinearPoints.testImmutable(TestBruteCollinearPoints.java:516)
+    TestBruteCollinearPoints.test10(TestBruteCollinearPoints.java:532)
+    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:753)
+
+    - sequence of operations was:
+          BruteCollinearPoints collinear = new BruteCollinearPoints(points);
+          collinear.segments()
+
+    - failed on trial 1 of 100
+
 ==> FAILED
 
 Test 11: check that data type does not mutate the constructor argument
   * input8.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (7000, 3000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (10000, 0)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -751,7 +757,7 @@ Test 11: check that data type does not mutate the constructor argument
 
   * equidistant.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (0, 10000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (10000, 0)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -764,7 +770,7 @@ Test 11: check that data type does not mutate the constructor argument
 Test 12: numberOfSegments() is consistent with segments()
   * filename = input8.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (7000, 3000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (10000, 0)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -775,7 +781,7 @@ Test 12: numberOfSegments() is consistent with segments()
 
   * filename = equidistant.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (0, 10000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (10000, 0)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -786,7 +792,7 @@ Test 12: numberOfSegments() is consistent with segments()
 
   * filename = input40.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (10000, 28000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (1000, 17000)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -797,7 +803,7 @@ Test 12: numberOfSegments() is consistent with segments()
 
   * filename = input48.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (22000, 9000)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (26000, 27000)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -808,7 +814,7 @@ Test 12: numberOfSegments() is consistent with segments()
 
   * filename = horizontal5.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (5067, 14118)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (7453, 14118)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -819,7 +825,7 @@ Test 12: numberOfSegments() is consistent with segments()
 
   * filename = vertical5.txt
 
-    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (14407, 17188)
+    java.lang.IllegalArgumentException: both arguments to LineSegment constructor are the same point: (14407, 19953)
 
     LineSegment.<init>(LineSegment.java:20)
     BruteCollinearPoints.segments(BruteCollinearPoints.java:48)
@@ -844,16 +850,16 @@ Test 13: throws an exception if either the constructor argument is null
     - constructor throws a java.lang.NullPointerException
     - constructor should throw a java.lang.IllegalArgumentException
      10
-     13350  3704
+     19409  9301
+      3566   723
      null
-     25442 23787
-       132 17300
-     16064 31385
-     18137 21475
-      6867 11965
-     32466 13649
-     20015 28600
-      8871 10239
+     12720 19519
+     21150 21989
+     29000 20282
+       873  8118
+     13099 31963
+     20131 21342
+      4290 20163
 
   * Point[] of length 10, number of null entries = 10
     - constructor throws wrong exception
@@ -876,26 +882,26 @@ Test 13: throws an exception if either the constructor argument is null
     - constructor throws a java.lang.NullPointerException
     - constructor should throw a java.lang.IllegalArgumentException
      4
-      2374 12311
-     18999 10375
-      6623 16968
+     16130 25676
+     19017 28738
      null
+     20462 15134
 
   * Point[] of length 3, number of null entries = 1
     - constructor throws wrong exception
     - constructor throws a java.lang.NullPointerException
     - constructor should throw a java.lang.IllegalArgumentException
      3
+     18344 29461
      null
-     14092 17634
-      5865 22398
+     29479  7096
 
   * Point[] of length 2, number of null entries = 1
     - constructor throws wrong exception
     - constructor throws a java.lang.NullPointerException
     - constructor should throw a java.lang.IllegalArgumentException
      2
-     30772  8308
+      7360 21816
      null
 
   * Point[] of length 1, number of null entries = 1
@@ -1067,78 +1073,90 @@ Test 2a: points from a file with horizontal line segments
 Test 2b: random horizontal line segments
   *  1 random horizontal line segment
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (1027, 19056) -> (10687, 19056)
-    - reference segment 0: (1027, 19056) -> (6951, 19056) -> (10687, 19056) -> (10693, 19056)
+    - student   segment 0: (9256, 19699) -> (8938, 19699)
+    - reference segment 0: (8280, 19699) -> (8938, 19699) -> (9256, 19699) -> (9659, 19699)
 
     - number of entries in student   solution: 3
     - number of entries in reference solution: 1
-    - 2 extra entries in student solution, including:
-      '(10687, 19056) -> (10693, 19056)'
+    - 3 extra entries in student solution, including:
+      '(9256, 19699) -> (9659, 19699)'
+
+    - 1 missing entry in student solution:
+      '(8280, 19699) -> (8938, 19699) -> (9256, 19699) -> (9659, 19699)'
 
 
     - failed on trial 1 of 500
      4
-      6951 19056
-      1027 19056
-     10687 19056
-     10693 19056
+      8280 19699
+      9256 19699
+      8938 19699
+      9659 19699
 
   *  5 random horizontal line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (16487, 1204) -> (9671, 1204)
-    - reference segment 0: (1894, 1204) -> (5231, 1204) -> (9671, 1204) -> (16487, 1204)
+    - student   segment 1: (9726, 19194) -> (11656, 19194)
+    - reference segment 3: (9726, 19194) -> (11656, 19194) -> (13306, 19194) -> (15545, 19194)
 
     - number of entries in student   solution: 27
     - number of entries in reference solution: 5
-    - 22 extra entries in student solution, including:
-      '(11528, 17128) -> (3620, 17128)'
+    - 23 extra entries in student solution, including:
+      '(17544, 20900) -> (20222, 20900)'
+
+    - 1 missing entry in student solution:
+      '(10078, 6117) -> (11656, 6117) -> (13236, 6117) -> (18724, 6117)'
 
 
     - failed on trial 1 of 250
      20
-      8633 17128
-     16487  1204
-      9671  1204
-     10231  2566
-     15457 13951
-     14580  2413
-     11671  2566
-      3941  2413
-      2952 17128
-     16028 13951
-     15266  2566
-     11653  2566
-      8737 13951
-     11528 17128
-      3620 17128
-      5231  1204
-     13768  2413
-      1125 13951
-     10373  2413
-      1894  1204
+     10078  6117
+      9726 19194
+     19778  9394
+     10801  6137
+     17544 20900
+     15545 19194
+      7991  9394
+     11656 19194
+     13306 19194
+     15059  9394
+      2867  6137
+     11656  6117
+     16646 20900
+     18724  6117
+      9238  9394
+     20222 20900
+     16111  6137
+      8286  6137
+      5777 20900
+     13236  6117
 
   * 10 random horizontal line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (5257, 3695) -> (5171, 3695)
-    - reference segment 2: (5171, 3695) -> (5257, 3695) -> (8053, 3695) -> (11732, 3695)
+    - student   segment 0: (16114, 3467) -> (12552, 3467)
+    - reference segment 1: (2294, 3467) -> (6052, 3467) -> (12552, 3467) -> (16114, 3467)
 
     - number of entries in student   solution: 57
     - number of entries in reference solution: 10
-    - 47 extra entries in student solution, including:
-      '(13227, 17404) -> (19259, 17404)'
+    - 48 extra entries in student solution, including:
+      '(18401, 19172) -> (20998, 19172)'
+
+    - 1 missing entry in student solution:
+      '(4206, 17890) -> (5333, 17890) -> (12808, 17890) -> (16707, 17890)'
 
 
     - failed on trial 1 of 50
 
   * 15 random horizontal line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (11633, 20725) -> (16009, 20725)
-    - reference segment 14: (11633, 20725) -> (12406, 20725) -> (16009, 20725) -> (17233, 20725)
+    - student   segment 0: (2763, 4328) -> (9556, 4328)
+    - reference segment 2: (2502, 4328) -> (2763, 4328) -> (9556, 4328) -> (16878, 4328)
 
     - number of entries in student   solution: 87
     - number of entries in reference solution: 15
-    - 72 extra entries in student solution, including:
-      '(16009, 20725) -> (17233, 20725)'
+    - 73 extra entries in student solution, including:
+      '(19224, 15659) -> (18243, 15659)'
+
+    - 1 missing entry in student solution:
+      '(10310, 12384) -> (12059, 12384) -> (16808, 12384) -> (16906, 12384)'
 
 
     - failed on trial 1 of 5
@@ -1212,87 +1230,81 @@ Test 3a: points from a file with vertical line segments
 Test 3b: random vertical line segments
   *  1 random vertical line segment
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (6160, 1658) -> (6160, 6381)
-    - reference segment 0: (6160, 1658) -> (6160, 6381) -> (6160, 9948) -> (6160, 17015)
+    - student   segment 0: (7334, 7832) -> (7334, 6718)
+    - reference segment 0: (7334, 6718) -> (7334, 7579) -> (7334, 7832) -> (7334, 16361)
 
     - number of entries in student   solution: 3
     - number of entries in reference solution: 1
     - 3 extra entries in student solution, including:
-      '(6160, 6381) -> (6160, 9948)'
+      '(7334, 7832) -> (7334, 7579)'
 
     - 1 missing entry in student solution:
-      '(6160, 1658) -> (6160, 6381) -> (6160, 9948) -> (6160, 17015)'
+      '(7334, 6718) -> (7334, 7579) -> (7334, 7832) -> (7334, 16361)'
 
 
     - failed on trial 1 of 500
      4
-      6160 17015
-      6160  1658
-      6160  6381
-      6160  9948
+      7334 16361
+      7334  7832
+      7334  6718
+      7334  7579
 
   *  5 random vertical line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (17569, 5688) -> (17569, 18359)
-    - reference segment 3: (17569, 5167) -> (17569, 5688) -> (17569, 18359) -> (17569, 19621)
+    - student   segment 0: (12215, 14572) -> (12215, 10507)
+    - reference segment 3: (12215, 7955) -> (12215, 10507) -> (12215, 14572) -> (12215, 17443)
 
     - number of entries in student   solution: 27
     - number of entries in reference solution: 5
-    - 23 extra entries in student solution, including:
-      '(17569, 18359) -> (17569, 19621)'
-
-    - 1 missing entry in student solution:
-      '(15664, 8177) -> (15664, 10472) -> (15664, 13826) -> (15664, 19344)'
+    - 22 extra entries in student solution, including:
+      '(11021, 16527) -> (11021, 16727)'
 
 
     - failed on trial 1 of 250
      20
-     15664 19344
-     17569  5688
-      2869 13677
-      2869 15780
-     17569 18359
-     20621 11382
-     15664 10472
-     17569 19621
-     20621 19661
-     20621  7635
-      4843 18619
-      2869  1753
-      4843 13868
-     20621  8104
-      4843  9024
-     15664 13826
-     15664  8177
-      2869  4794
-     17569  5167
-      4843  9936
+     17314 14425
+     12215 14572
+     11139 15240
+     17314 19205
+     12215 10507
+      9276  3660
+     11139  8423
+     12215 17443
+     11021 16527
+      9276 13053
+     11021 15970
+      9276  5631
+      9276  7561
+     17314 12500
+     11021 16727
+     12215  7955
+     11139  7470
+     17314  4279
+     11021  2433
+     11139 13577
 
   * 10 random vertical line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (8376, 7601) -> (8376, 4284)
-    - reference segment 3: (8376, 4284) -> (8376, 7601) -> (8376, 7704) -> (8376, 16266)
+    - student   segment 1: (11556, 1128) -> (11556, 19025)
+    - reference segment 4: (11556, 1128) -> (11556, 13287) -> (11556, 19025) -> (11556, 20369)
 
     - number of entries in student   solution: 57
     - number of entries in reference solution: 10
-    - 48 extra entries in student solution, including:
-      '(13085, 18771) -> (13085, 19078)'
-
-    - 1 missing entry in student solution:
-      '(6562, 4127) -> (6562, 6727) -> (6562, 7316) -> (6562, 20937)'
+    - 47 extra entries in student solution, including:
+      '(11556, 20369) -> (11556, 19025)'
 
 
     - failed on trial 1 of 50
 
   * 15 random vertical line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 1: (6119, 20763) -> (6119, 4469)
-    - reference segment 3: (6119, 1218) -> (6119, 4469) -> (6119, 18050) -> (6119, 20763)
+    - student   segment 0: (9830, 3191) -> (9830, 16436)
+    - reference segment 6: (9830, 3191) -> (9830, 13370) -> (9830, 16436) -> (9830, 19957)
 
     - number of entries in student   solution: 87
     - number of entries in reference solution: 15
     - 72 extra entries in student solution, including:
-      '(5082, 19539) -> (5082, 20856)'
+      '(2249, 19189) -> (2249, 19241)'
 
 
     - failed on trial 1 of 5
@@ -1450,12 +1462,7 @@ Test 7: check for dependence on either compareTo() or compare()
     - student   segment 0: (13000, 0) -> (9000, 6000)
     - reference segment 0: (13000, 0) -> (11000, 3000) -> (9000, 6000) -> (5000, 12000)
 
-    - number of entries in student   solution: 24
-    - number of entries in reference solution: 4
-    - 23 extra entries in student solution, including:
-      '(10000, 20000) -> (0, 30000)'
-
-    - 3 missing entries in student solution, inclu
+    - numbe
 
 ...
 

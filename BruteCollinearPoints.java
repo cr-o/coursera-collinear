@@ -38,9 +38,9 @@ public class BruteCollinearPoints {
         ArrayList<LineSegment> arrayList = new ArrayList<LineSegment>();
         int pointsLength = this.points.length;
         for (int i = 0; i < pointsLength - 3; i++) {
-            for (int j = 1; j < pointsLength - 2; j++) {
-                for (int k = 2; k < pointsLength - 1; k++) {
-                    for (int m = 3; m < pointsLength; m++) {
+            for (int j = 0; j < pointsLength - 2; j++) {
+                for (int k = 0; k < pointsLength - 1; k++) {
+                    for (int m = 0; m < pointsLength; m++) {
                         if (i != j && j != k && k != m) {
                             double firstSlope = this.points[i].slopeTo(this.points[j]);
                             if (firstSlope == this.points[i].slopeTo(this.points[k])
