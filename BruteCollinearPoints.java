@@ -62,13 +62,13 @@ public class BruteCollinearPoints {
                     for (int m = 0; m < pointsLength; m++) {
                         if (i != j && i != k && i != m && j != k && j != m && k != m) {
                             double firstSlope = this.points[i].slopeTo(this.points[j]);
-                            if (firstSlope == this.points[i].slopeTo(this.points[k])
-                                    && firstSlope == this.points[k].slopeTo(this.points[m])) {
-                                arrayList.add(new PointWithOriginSlope(this.points[i],
-                                                                       this.points[m], firstSlope));
-                                lineSegments.add(new LineSegment(this.points[i], this.points[m]));
+                            // if (firstSlope == this.points[i].slopeTo(this.points[k])
+                            //         && firstSlope == this.points[k].slopeTo(this.points[m])) {
+                            arrayList.add(new PointWithOriginSlope(this.points[i],
+                                                                   this.points[m], firstSlope));
+                            lineSegments.add(new LineSegment(this.points[i], this.points[m]));
 
-                            }
+                            //}
                         }
                     }
                 }
