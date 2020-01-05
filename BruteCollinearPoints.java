@@ -66,7 +66,7 @@ public class BruteCollinearPoints {
                             //         && firstSlope == this.points[k].slopeTo(this.points[m])) {
                             arrayList.add(new PointWithOriginSlope(this.points[i],
                                                                    this.points[m], firstSlope));
-                            lineSegments.add(new LineSegment(this.points[i], this.points[m]));
+                            // lineSegments.add(new LineSegment(this.points[i], this.points[m]));
 
                             //}
                         }
@@ -78,11 +78,26 @@ public class BruteCollinearPoints {
                 .toArray(new PointWithOriginSlope[arrayList.size()]);
 
         // sort the values by origin point
-        Arrays.sort(origins, slopeComparator());
+        Arrays.sort(origins, originComparator());
 
-        // for (int p = 0; p < origins.length; p++) {
-        //
-        // }
+        PointWithOriginSlope[] toCheck = Arrays.copyOfRange(origins, 0, 6);
+        origins = null;
+        double prevSlope = 0.0;
+        Arrays.sort(toCheck, slopeComparator());
+        ArrayList<Point> unique = new ArrayList<Point>();
+
+        for (int it = 0; it < 6; it++) {
+            if (it == 0) {
+                unique.add(toCheck[it].point);
+            }
+            else {
+                if (!unique.contains(toCheck[it].point)) {
+                    lineSegments.add(new LineSegment(toCheck[it].origin, toCheck[it].point));
+                    unique.add(toCheck[it].point);
+                }
+
+            }
+        }
 
         return lineSegments.toArray(new LineSegment[lineSegments.size()]);
 
