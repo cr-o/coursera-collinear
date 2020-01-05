@@ -61,7 +61,7 @@ public class BruteCollinearPoints {
                 for (int k = 0; k < pointsLength; k++) {
                     for (int m = 0; m < pointsLength; m++) {
                         if (i != j && i != k && i != m && j != k && j != m && k != m) {
-                            double firstSlope = this.points[i].slopeTo(this.points[j]);
+                            double firstSlope = this.points[i].slopeTo(this.points[m]);
                             // if (firstSlope == this.points[i].slopeTo(this.points[k])
                             //         && firstSlope == this.points[k].slopeTo(this.points[m])) {
                             arrayList.add(new PointWithOriginSlope(this.points[i],

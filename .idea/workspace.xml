@@ -97,8 +97,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="37" />
+          <line>86</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -106,6 +106,7 @@
       <configuration name="Application">
         <watch expression="this.points[i].slopeTo(this.points[k]);" language="JAVA" />
         <watch expression="this.points[k].slopeTo(this.points[m]" language="JAVA" />
+        <watch expression="arrayList.get(5)" />
       </configuration>
     </watches-manager>
   </component>
