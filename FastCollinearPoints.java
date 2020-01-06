@@ -17,7 +17,7 @@ public class FastCollinearPoints {
     private Point[] points;
 
     public FastCollinearPoints(Point[] points) {
-        if (points == null || points.length == 0) {
+        if (points.length == 0) {
             throw new IllegalArgumentException("illegal point argument");
         }
         this.points = points;

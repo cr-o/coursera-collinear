@@ -1,28 +1,26 @@
-See the Assessment Guide for information on how to interpret this report.
-
 ASSESSMENT SUMMARY
 
 Compilation:  PASSED
 API:          PASSED
 
-Spotbugs:     FAILED (15 warnings)
+Spotbugs:     FAILED (14 warnings)
 PMD:          FAILED (10 warnings)
 Checkstyle:   FAILED (0 errors, 1 warning)
 
-Correctness:  12/41 tests passed
+Correctness:  15/41 tests passed
 Memory:       1/1 tests passed
-Timing:       0/41 tests passed
+Timing:       8/41 tests passed
 
-Aggregate score: 37.56%
+Aggregate score: 45.85%
 [Compilation: 5%, API: 5%, Spotbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
 
 ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
-5.2K Jan  6 15:37 BruteCollinearPoints.java
-8.6K Jan  6 15:37 FastCollinearPoints.java
-4.3K Jan  6 15:37 Point.java
+5.8K Jan  6 17:22 BruteCollinearPoints.java
+8.7K Jan  6 17:22 FastCollinearPoints.java
+4.3K Jan  6 17:22 Point.java
 
 
 ********************************************************************************
@@ -71,15 +69,14 @@ M D DLS_DEAD_LOCAL_STORE DLS: Assigns a value to the local variable 'comparator'
 M D DLS_DEAD_LOCAL_STORE DLS: Assigns a value to the local variable 'compareResult' but that value is never used.  At Point.java:[line 135]
 L D FE_FLOATING_POINT_EQUALITY FE: Tests for exact floating-point equality. Because floating-point calculations may involve rounding, the calculated values may be imprecise.  At Point.java:[line 68]
 H D UC_USELESS_VOID_METHOD UC: The void method 'main()' appears to serve no purpose.  At Point.java:[line 139]
-M C SUA_SUSPICIOUS_UNINITIALIZED_ARRAY SUA: Method BruteCollinearPoints.segments() returns an array that appears not to be initialized  At BruteCollinearPoints.java:[line 86]
 M V EI_EXPOSE_REP2 EI2: Stores a reference to an externally mutable object in the instance variable 'points', exposing the internal representation of the class 'BruteCollinearPoints'. Instead, create a defensive copy of the object referenced by the parameter variable 'points' and store that copy in the instance variable 'points'.  At BruteCollinearPoints.java:[line 23]
 L D FE_FLOATING_POINT_EQUALITY FE: Tests for exact floating-point equality. Because floating-point calculations may involve rounding, the calculated values may be imprecise.  At BruteCollinearPoints.java:[line 57]
 M V EI_EXPOSE_REP2 EI2: Stores a reference to an externally mutable object in the instance variable 'points', exposing the internal representation of the class 'FastCollinearPoints'. Instead, create a defensive copy of the object referenced by the parameter variable 'points' and store that copy in the instance variable 'points'.  At FastCollinearPoints.java:[line 23]
 L D FE_FLOATING_POINT_EQUALITY FE: Tests for exact floating-point equality. Because floating-point calculations may involve rounding, the calculated values may be imprecise.  At FastCollinearPoints.java:[line 86]
-L P SIC_INNER_SHOULD_BE_STATIC_ANON SIC: Should the anonymous inner class 'BruteCollinearPoints$1' be refactored into a named static nested class?  At BruteCollinearPoints.java:[line 91]
+L P SIC_INNER_SHOULD_BE_STATIC_ANON SIC: Should the anonymous inner class 'BruteCollinearPoints$1' be refactored into a named static nested class?  At BruteCollinearPoints.java:[line 97]
 L P SIC_INNER_SHOULD_BE_STATIC_ANON SIC: Should the anonymous inner class 'FastCollinearPoints$1' be refactored into a named static nested class?  At FastCollinearPoints.java:[line 170]
 L P SIC_INNER_SHOULD_BE_STATIC_ANON SIC: Should the anonymous inner class 'FastCollinearPoints$2' be refactored into a named static nested class?  At FastCollinearPoints.java:[line 178]
-Warnings generated: 15
+Warnings generated: 14
 
 
 ================================================================
@@ -192,126 +189,99 @@ The inputs satisfy the following conditions:
 
 Test 1: points from a file
   * filename = input8.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 2
+    - 2 missing entries in student solution, including:
+      '(3000, 4000) -> (6000, 7000) -> (14000, 15000) -> (20000, 21000)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test1(TestBruteCollinearPoints.java:155)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:717)
 
   * filename = equidistant.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 4
+    - 4 missing entries in student solution, including:
+      '(30000, 0) -> (20000, 10000) -> (10000, 20000) -> (0, 30000)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test1(TestBruteCollinearPoints.java:156)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:717)
 
   * filename = input40.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 4
+    - 4 missing entries in student solution, including:
+      '(2000, 29000) -> (4000, 29000) -> (22000, 29000) -> (28000, 29000)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test1(TestBruteCollinearPoints.java:157)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:717)
 
   * filename = input48.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 6
+    - 6 missing entries in student solution, including:
+      '(1000, 26000) -> (9000, 26000) -> (11000, 26000) -> (18000, 26000)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test1(TestBruteCollinearPoints.java:158)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:717)
 
 ==> FAILED
 
 Test 2a: points from a file with horizontal line segments
   * filename = horizontal5.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 5
+    - 5 missing entries in student solution, including:
+      '(2682, 14118) -> (5067, 14118) -> (7453, 14118) -> (7821, 14118)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test2a(TestBruteCollinearPoints.java:164)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:720)
 
   * filename = horizontal25.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 25
+    - 25 missing entries in student solution, including:
+      '(8784, 20913) -> (9880, 20913) -> (16352, 20913) -> (19666, 20913)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test2a(TestBruteCollinearPoints.java:165)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:720)
 
 ==> FAILED
 
 Test 2b: random horizontal line segments
   *  1 random horizontal line segment
   *  5 random horizontal line segments
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 5
+    - 5 missing entries in student solution, including:
+      '(5537, 15032) -> (7602, 15032) -> (19005, 15032) -> (20444, 15032)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.horizontalSegments(TestBruteCollinearPoints.java:177)
-    TestBruteCollinearPoints.test2b(TestBruteCollinearPoints.java:220)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:723)
 
     - failed on trial 1 of 250
      20
-      5779 17377
-      8919  2679
-     14736  2679
-     16682  3567
-     20230  3567
-     11730  4604
-     13541  4604
-     20762 17377
-      3454 17377
-     20818  4604
-     20534  3567
-      9742  2679
-     14290  2679
-     18045  4604
-     16867 18839
-     12326 17377
-     18856 18839
-     12988 18839
-     18456 18839
-      1942  3567
+     18268 12800
+      3700  1069
+      5572  9397
+     20444 15032
+      7331  9397
+     13924 12800
+     11671  1069
+     12465  4899
+     18751  4899
+     12463  4899
+     18570  9397
+      5537 15032
+     18829 12800
+     19005 15032
+      7602 15032
+      4378  1069
+     11071  4899
+      6448 12800
+     17924  9397
+     16353  1069
 
   * 10 random horizontal line segments
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 10
+    - 10 missing entries in student solution, including:
+      '(5836, 17307) -> (8519, 17307) -> (15443, 17307) -> (16131, 17307)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.horizontalSegments(TestBruteCollinearPoints.java:177)
-    TestBruteCollinearPoints.test2b(TestBruteCollinearPoints.java:221)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:723)
 
     - failed on trial 1 of 50
 
   * 15 random horizontal line segments
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 15
+    - 15 missing entries in student solution, including:
+      '(17108, 20945) -> (17648, 20945) -> (20697, 20945) -> (20845, 20945)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.horizontalSegments(TestBruteCollinearPoints.java:177)
-    TestBruteCollinearPoints.test2b(TestBruteCollinearPoints.java:222)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:723)
 
     - failed on trial 1 of 5
 
@@ -319,83 +289,68 @@ Test 2b: random horizontal line segments
 
 Test 3a: points from a file with vertical line segments
   * filename = vertical5.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 5
+    - 5 missing entries in student solution, including:
+      '(14407, 10367) -> (14407, 17188) -> (14407, 17831) -> (14407, 19953)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test3a(TestBruteCollinearPoints.java:228)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:726)
 
   * filename = vertical25.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 25
+    - 25 missing entries in student solution, including:
+      '(19953, 10489) -> (19953, 10688) -> (19953, 19299) -> (19953, 20439)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test3a(TestBruteCollinearPoints.java:229)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:726)
 
 ==> FAILED
 
 Test 3b: random vertical line segments
   *  1 random vertical line segment
   *  5 random vertical line segments
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 5
+    - 5 missing entries in student solution, including:
+      '(3924, 4363) -> (3924, 14317) -> (3924, 15637) -> (3924, 16998)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.verticalSegments(TestBruteCollinearPoints.java:201)
-    TestBruteCollinearPoints.test3b(TestBruteCollinearPoints.java:236)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:729)
 
     - failed on trial 1 of 250
      20
-      9686  6251
-     15731  2610
-      9147 14935
-      9147 12524
-      9686 18283
-     15731 12556
-      8505  8228
-      8505  3477
-      9686  9572
-      9147 19980
-      8505  1529
-     12896 17262
-     15731 16655
-     15731  2158
-      8505 20228
-     12896  1130
-     12896  2568
-     12896 10893
-      9147 13642
-      9686  9857
+      3924 15637
+     16113  7490
+      3924 14317
+     16113 15564
+     16113 16189
+     13325  7050
+      7672  3556
+      7672  5576
+     13325  3041
+      7672 17584
+     13325 19359
+     16113  4332
+      3623  3810
+      3924 16998
+      7672 19006
+      3924  4363
+     13325  5474
+      3623  4817
+      3623  4688
+      3623 16638
 
   * 10 random vertical line segments
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 10
+    - 10 missing entries in student solution, including:
+      '(13321, 12072) -> (13321, 14743) -> (13321, 16361) -> (13321, 19816)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.verticalSegments(TestBruteCollinearPoints.java:201)
-    TestBruteCollinearPoints.test3b(TestBruteCollinearPoints.java:237)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:729)
 
     - failed on trial 1 of 50
 
   * 15 random vertical line segments
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 15
+    - 15 missing entries in student solution, including:
+      '(20441, 13592) -> (20441, 19897) -> (20441, 19900) -> (20441, 20498)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.verticalSegments(TestBruteCollinearPoints.java:201)
-    TestBruteCollinearPoints.test3b(TestBruteCollinearPoints.java:238)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:729)
 
     - failed on trial 1 of 5
 
@@ -403,214 +358,69 @@ Test 3b: random vertical line segments
 
 Test 4a: points from a file with no line segments
   * filename = random23.txt
-
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test4a(TestBruteCollinearPoints.java:244)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:732)
-
   * filename = random38.txt
-
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test4a(TestBruteCollinearPoints.java:245)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:732)
-
-==> FAILED
+==> passed
 
 Test 4b: random points with no line segments
   *  5 random points
-
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.no4CollinearPoints(TestBruteCollinearPoints.java:256)
-    TestBruteCollinearPoints.test4b(TestBruteCollinearPoints.java:274)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:735)
-
-    - failed on trial 1 of 500
-     5
-     11076 10563
-     20891 20163
-     11935 21785
-     30521 20635
-      9403 20151
-
   * 10 random points
-
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.no4CollinearPoints(TestBruteCollinearPoints.java:256)
-    TestBruteCollinearPoints.test4b(TestBruteCollinearPoints.java:275)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:735)
-
-    - failed on trial 1 of 250
-     10
-      2049 29210
-     22055  7353
-      8372 24113
-      6067 24484
-      7322   199
-     22996  4533
-     26449 29045
-     11805 24176
-     26290 16946
-     26958  8525
-
   * 20 random points
-
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.no4CollinearPoints(TestBruteCollinearPoints.java:256)
-    TestBruteCollinearPoints.test4b(TestBruteCollinearPoints.java:276)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:735)
-
-    - failed on trial 1 of 100
-     20
-     11103 22813
-     18908 28127
-     22972 22947
-       658 20514
-     10799 11417
-     10189  2808
-     23030 32754
-      6060 17166
-     29198  9168
-     26721 26207
-      5170 13212
-     29585  9970
-     12518 12571
-      3403 18895
-     17701  7564
-      4333 26848
-      8751 23528
-     14054  2002
-     13336 17657
-     12847  8165
-
   * 50 random points
-
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.no4CollinearPoints(TestBruteCollinearPoints.java:256)
-    TestBruteCollinearPoints.test4b(TestBruteCollinearPoints.java:277)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:735)
-
-    - failed on trial 1 of 10
-
-==> FAILED
+==> passed
 
 Test 5: points from a file with fewer than 4 points
   * filename = input1.txt
-
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test5(TestBruteCollinearPoints.java:283)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:738)
-
   * filename = input2.txt
-
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test5(TestBruteCollinearPoints.java:284)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:738)
-
   * filename = input3.txt
-
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test5(TestBruteCollinearPoints.java:285)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:738)
-
-==> FAILED
+==> passed
 
 Test 6: check for dependence on either compareTo() or compare()
         returning { -1, +1, 0 } instead of { negative integer,
         positive integer, zero }
   * filename = equidistant.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 4
+    - 4 missing entries in student solution, including:
+      '(30000, 0) -> (20000, 10000) -> (10000, 20000) -> (0, 30000)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test6(TestBruteCollinearPoints.java:294)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:741)
 
   * filename = input40.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 4
+    - 4 missing entries in student solution, including:
+      '(2000, 29000) -> (4000, 29000) -> (22000, 29000) -> (28000, 29000)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test6(TestBruteCollinearPoints.java:295)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:741)
 
   * filename = input48.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 6
+    - 6 missing entries in student solution, including:
+      '(1000, 26000) -> (9000, 26000) -> (11000, 26000) -> (18000, 26000)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test6(TestBruteCollinearPoints.java:296)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:741)
 
 ==> FAILED
 
 Test 7: check for fragile dependence on return value of toString()
   * filename = equidistant.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 4
+    - 4 missing entries in student solution, including:
+      '(30000, 0) -> (20000, 10000) -> (10000, 20000) -> (0, 30000)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test7(TestBruteCollinearPoints.java:304)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:744)
 
   * filename = input40.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 4
+    - 4 missing entries in student solution, including:
+      '(2000, 29000) -> (4000, 29000) -> (22000, 29000) -> (28000, 29000)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test7(TestBruteCollinearPoints.java:305)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:744)
 
   * filename = input48.txt
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 6
+    - 6 missing entries in student solution, including:
+      '(1000, 26000) -> (9000, 26000) -> (11000, 26000) -> (18000, 26000)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.file(TestBruteCollinearPoints.java:150)
-    TestBruteCollinearPoints.test7(TestBruteCollinearPoints.java:306)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:744)
 
 
 It is bad style to write code that depends on the particular format of
@@ -623,59 +433,50 @@ provide access to the x- and y-coordinates).
 Test 8: random line segments, none vertical or horizontal
   *  1 random line segment
   *  5 random line segments
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 5
+    - 5 missing entries in student solution, including:
+      '(1669, 6216) -> (10379, 6466) -> (12121, 6516) -> (12992, 6541)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.noVerticalOrHorizontalSegments(TestBruteCollinearPoints.java:328)
-    TestBruteCollinearPoints.test8(TestBruteCollinearPoints.java:347)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:747)
 
     - failed on trial 1 of 250
      20
-      9017 16712
-     10044 15154
-     12836 10955
-     12015 16012
-      6877 12322
-      7416 14010
-     11358 15726
-      3166  1115
-     13122 10227
-     14354 11195
-     13066 10183
-     12702  9897
-      1887  8086
-      7620 15340
-      3798 10504
-     13803 11939
-     17671 15875
-      7733 14078
-      5072 12116
-      1741  1786
+     10379  6466
+     10075 13517
+      1669  6216
+      5833  6114
+     12121  6516
+      4286   199
+     10937  1733
+     14387  6318
+      5952  6569
+     13697  5401
+      8309  6565
+      2845  5685
+      8992  6675
+      9867  6669
+     10247   816
+     12407  7225
+      9958  9665
+      5357  4294
+      9672   249
+     12992  6541
 
   * 10 random line segments
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 10
+    - 10 missing entries in student solution, including:
+      '(5280, 10000) -> (6784, 10770) -> (11296, 13080) -> (14304, 14620)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.noVerticalOrHorizontalSegments(TestBruteCollinearPoints.java:328)
-    TestBruteCollinearPoints.test8(TestBruteCollinearPoints.java:348)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:747)
 
     - failed on trial 1 of 100
 
   * 15 random line segments
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 15
+    - 15 missing entries in student solution, including:
+      '(6160, 10818) -> (7534, 11574) -> (13946, 15102) -> (17610, 17118)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.noVerticalOrHorizontalSegments(TestBruteCollinearPoints.java:328)
-    TestBruteCollinearPoints.test8(TestBruteCollinearPoints.java:349)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:747)
 
     - failed on trial 1 of 50
 
@@ -684,59 +485,50 @@ Test 8: random line segments, none vertical or horizontal
 Test 9: random line segments
   *  1 random line segment
   *  5 random line segments
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 5
+    - 5 missing entries in student solution, including:
+      '(6235, 10589) -> (7285, 10589) -> (7635, 10589) -> (7985, 10589)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.arbitrarySegments(TestBruteCollinearPoints.java:361)
-    TestBruteCollinearPoints.test9(TestBruteCollinearPoints.java:380)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:750)
 
     - failed on trial 1 of 250
      20
-     14610 13868
-       922  7146
-      5964  7917
-     11287  9279
-     11287 13940
-     13152  8036
-      5829  5997
-      2803  8818
-      2704  8730
-      5925  5031
-      6664 12250
-     11287 13291
-     11287 13881
-      5829  6653
-     14124 11924
-      5959  7547
-     14340 12788
-      5829  6309
-      5829  6517
-      5929  5327
+     10770  5641
+      4761 10935
+      6607 13712
+      6728  8889
+      4965 11193
+       477  5517
+      6607 14052
+     10305  5176
+      6607  8357
+      1157  6377
+      6607 12862
+     13157  8028
+     11886  6757
+      2894  4515
+      6444  8565
+      5308  7269
+      7285 10589
+      6235 10589
+      7635 10589
+      7985 10589
 
   * 10 random line segments
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 10
+    - 10 missing entries in student solution, including:
+      '(7564, 12600) -> (9629, 13930) -> (10160, 14272) -> (10632, 14576)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.arbitrarySegments(TestBruteCollinearPoints.java:361)
-    TestBruteCollinearPoints.test9(TestBruteCollinearPoints.java:381)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:750)
 
     - failed on trial 1 of 100
 
   * 15 random line segments
+    - number of entries in student   solution: 0
+    - number of entries in reference solution: 15
+    - 15 missing entries in student solution, including:
+      '(7444, 11951) -> (7699, 12096) -> (7801, 12154) -> (8158, 12357)'
 
-    java.lang.NullPointerException: segment 0 is null
-
-    TestBruteCollinearPoints.toLineSegments226(TestBruteCollinearPoints.java:48)
-    TestBruteCollinearPoints.testSegments(TestBruteCollinearPoints.java:109)
-    TestBruteCollinearPoints.arbitrarySegments(TestBruteCollinearPoints.java:361)
-    TestBruteCollinearPoints.test9(TestBruteCollinearPoints.java:382)
-    TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:750)
 
     - failed on trial 1 of 50
 
@@ -749,29 +541,25 @@ Test 10: check that data type is immutable by testing whether each method
     java.lang.NullPointerException
 
     BruteCollinearPoints.segments(BruteCollinearPoints.java:54)
-    BruteCollinearPoints.numberOfSegments(BruteCollinearPoints.java:38)
-    TestBruteCollinearPoints.testImmutable(TestBruteCollinearPoints.java:438)
+    TestBruteCollinearPoints.testImmutable(TestBruteCollinearPoints.java:458)
     TestBruteCollinearPoints.testImmutable(TestBruteCollinearPoints.java:516)
     TestBruteCollinearPoints.test10(TestBruteCollinearPoints.java:531)
     TestBruteCollinearPoints.main(TestBruteCollinearPoints.java:753)
 
     - sequence of operations was:
           BruteCollinearPoints collinear = new BruteCollinearPoints(points);
-          collinear.numberOfSegments() -> 1
+          collinear.segments()
+          collinear.numberOfSegments() -> 0
+          collinear.numberOfSegments() -> 0
+          mutate array returned by last call to segments()
+          mutate array returned by last call to segments()
           collinear.segments()
           collinear.segments()
-          collinear.numberOfSegments() -> 1
-          collinear.segments()
+          collinear.numberOfSegments() -> 0
           mutate array returned by last call to segments()
-          mutate array returned by last call to segments()
-          collinear.numberOfSegments() -> 1
-          mutate array returned by last call to segments()
-          mutate array returned by last call to segments()
-          collinear.numberOfSegments() -> 1
+          collinear.numberOfSegments() -> 0
           mutate points[] array that was passed to constructor
-          mutate array returned by last call to segments()
-          mutate array returned by last call to segments()
-          collinear.numberOfSegments()
+          collinear.segments()
 
     - failed on trial 1 of 100
 
@@ -788,8 +576,9 @@ Test 10: check that data type is immutable by testing whether each method
 
     - sequence of operations was:
           BruteCollinearPoints collinear = new BruteCollinearPoints(points);
+          collinear.segments()
           mutate points[] array that was passed to constructor
-          mutate points[] array that was passed to constructor
+          mutate array returned by last call to segments()
           collinear.numberOfSegments()
 
     - failed on trial 1 of 100
@@ -814,39 +603,33 @@ Test 12: numberOfSegments() is consistent with segments()
 Test 13: throws an exception if either the constructor argument is null
          or any entry in array is null
   * argument is null
-    - constructor throws wrong exception
-    - constructor throws a java.lang.NullPointerException
-    - constructor should throw a java.lang.IllegalArgumentException
-     0
-
   * Point[] of length 10, number of null entries = 1
     - constructor throws wrong exception
     - constructor throws a java.lang.NullPointerException
     - constructor should throw a java.lang.IllegalArgumentException
      10
-     15112 12085
-     21980 17091
-     20859   529
+      8786  9585
+      6846 31003
+     12021 27079
+     23050  7703
+     22658 11361
+     23002 22857
      null
-     14203  4033
-     21563  1547
-     20035 18772
-     26974 20833
-     24502  5886
-     25983 17862
+     11452  1943
+     31687 12185
+      6296 16994
 
   * Point[] of length 10, number of null entries = 10
   * Point[] of length 4, number of null entries = 1
   * Point[] of length 3, number of null entries = 1
+  * Point[] of length 2, number of null entries = 1
     - constructor throws wrong exception
     - constructor throws a java.lang.NullPointerException
     - constructor should throw a java.lang.IllegalArgumentException
-     3
-       958 11664
+     2
+     25629  3034
      null
-      2818  8697
 
-  * Point[] of length 2, number of null entries = 1
   * Point[] of length 1, number of null entries = 1
     - constructor fails to throw an exception
      1
@@ -864,7 +647,7 @@ Test 14: check that the constructor throws an exception if duplicate points
 ==> passed
 
 
-Total: 3/17 tests passed!
+Total: 6/17 tests passed!
 
 
 ================================================================
@@ -992,66 +775,66 @@ Test 2a: points from a file with horizontal line segments
 Test 2b: random horizontal line segments
   *  1 random horizontal line segment
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (5979, 5505) -> (10625, 5505)
-    - reference segment 0: (5979, 5505) -> (10625, 5505) -> (13683, 5505) -> (17972, 5505)
+    - student   segment 0: (4093, 11112) -> (9192, 11112)
+    - reference segment 0: (4093, 11112) -> (9192, 11112) -> (11246, 11112) -> (12435, 11112)
 
     - number of entries in student   solution: 1
     - number of entries in reference solution: 1
     - 1 extra entry in student solution:
-      '(5979, 5505) -> (10625, 5505)'
+      '(4093, 11112) -> (9192, 11112)'
 
     - 1 missing entry in student solution:
-      '(5979, 5505) -> (10625, 5505) -> (13683, 5505) -> (17972, 5505)'
+      '(4093, 11112) -> (9192, 11112) -> (11246, 11112) -> (12435, 11112)'
 
 
-    - failed on trial 2 of 500
+    - failed on trial 1 of 500
      4
-     10625  5505
-      5979  5505
-     17972  5505
-     13683  5505
+      4093 11112
+     11246 11112
+      9192 11112
+     12435 11112
 
   *  5 random horizontal line segments
     - number of entries in student   solution: 1
     - number of entries in reference solution: 5
     - 1 extra entry in student solution:
-      '(1910, 1984) -> (18279, 18581)'
+      '(7337, 10355) -> (15105, 20665)'
 
     - 5 missing entries in student solution, including:
-      '(8411, 18581) -> (8584, 18581) -> (14633, 18581) -> (18279, 18581)'
+      '(1293, 20665) -> (3460, 20665) -> (14633, 20665) -> (15105, 20665)'
 
 
     - failed on trial 1 of 250
      20
-     11383 12911
-     11518 10617
-      7525  1984
-     19653 12911
-     14633 18581
-     20082 10617
-     11184 16642
-      8584 18581
-      8411 18581
-     16567 10617
-      4400  1984
-     18279 18581
-      2419 10617
-      7174 12911
-     19195 12911
-     11374 16642
-      6952 16642
-      1910  1984
-     17127  1984
-     15977 16642
+     19655 18291
+     20584 16931
+      3460 20665
+     20013 15901
+     20313 18291
+     13443 10355
+     18333 16931
+      7337 10355
+      6319 15901
+     11683 16931
+     20899 10355
+     11333 18291
+     14633 20665
+     15105 20665
+     12883 15901
+      1293 20665
+     18739 10355
+     20406 15901
+     17380 16931
+     15854 18291
 
   * 10 random horizontal line segments
     - number of entries in student   solution: 1
     - number of entries in reference solution: 10
     - 1 extra entry in student solution:
-      '(14788, 3293) -> (13680, 19782)'
+      '(5533, 3977) -> (11866, 14046)'
 
     - 10 missing entries in student solution, including:
-      '(4941, 19782) -> (4998, 19782) -> (8977, 19782) -> (13680, 19782)'
+      '(2648, 14046) -> (7086, 14046) -> (11181, 14046) -> (11866, 14046)'
 
 
     - failed on trial 1 of 50
@@ -1060,10 +843,10 @@ Test 2b: random horizontal line segments
     - number of entries in student   solution: 1
     - number of entries in reference solution: 15
     - 1 extra entry in student solution:
-      '(3547, 2809) -> (19862, 20780)'
+      '(4899, 1333) -> (19487, 20761)'
 
     - 15 missing entries in student solution, including:
-      '(4185, 20780) -> (11157, 20780) -> (15301, 20780) -> (19862, 20780)'
+      '(10411, 20761) -> (13478, 20761) -> (16824, 20761) -> (19487, 20761)'
 
 
     - failed on trial 1 of 5
@@ -1126,66 +909,63 @@ Test 3a: points from a file with vertical line segments
 Test 3b: random vertical line segments
   *  1 random vertical line segment
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (14493, 4142) -> (14493, 10476)
-    - reference segment 0: (14493, 4142) -> (14493, 10476) -> (14493, 13582) -> (14493, 18284)
+    - student   segment 0: (19903, 2913) -> (19903, 6574)
+    - reference segment 0: (19903, 2913) -> (19903, 6574) -> (19903, 15185) -> (19903, 18298)
 
     - number of entries in student   solution: 1
     - number of entries in reference solution: 1
     - 1 extra entry in student solution:
-      '(14493, 4142) -> (14493, 10476)'
+      '(19903, 2913) -> (19903, 6574)'
 
     - 1 missing entry in student solution:
-      '(14493, 4142) -> (14493, 10476) -> (14493, 13582) -> (14493, 18284)'
+      '(19903, 2913) -> (19903, 6574) -> (19903, 15185) -> (19903, 18298)'
 
 
-    - failed on trial 2 of 500
+    - failed on trial 1 of 500
      4
-     14493  4142
-     14493 13582
-     14493 10476
-     14493 18284
+     19903  2913
+     19903  6574
+     19903 18298
+     19903 15185
 
   *  5 random vertical line segments
     - number of entries in student   solution: 1
     - number of entries in reference solution: 5
-    - 1 extra entry in student solution:
-      '(13786, 2006) -> (10238, 20379)'
-
-    - 5 missing entries in student solution, including:
-      '(12164, 12503) -> (12164, 14995) -> (12164, 15711) -> (12164, 15952)'
+    - 4 missing entries in student solution, including:
+      '(13805, 8895) -> (13805, 10403) -> (13805, 12026) -> (13805, 19771)'
 
 
     - failed on trial 1 of 250
      20
-     10238 20379
-     12164 15952
-      7753 16631
-     13786  7445
-     10238  3975
-     12164 12503
-      7753 12020
-      4108 16957
-     12164 14995
-      4108  3741
-     12164 15711
-     10238 19922
-     13786  2006
-      4108  2481
-     13786 15452
-     10238 18764
-      7753 14838
-     13786 15896
-      7753  2867
-      4108 10560
+      9574 20404
+      3906 15497
+      3906 17452
+     12757  8645
+     14595 11617
+     14595 19742
+     13805 10403
+     13805  8895
+     14595  7230
+      9574 19016
+     12757  5407
+     12757  5764
+     14595  7712
+      9574  2634
+     12757  5373
+      3906 18960
+     13805 19771
+      9574 19036
+      3906  6368
+     13805 12026
 
   * 10 random vertical line segments
     - number of entries in student   solution: 1
     - number of entries in reference solution: 10
     - 1 extra entry in student solution:
-      '(13976, 1214) -> (17005, 20740)'
+      '(13865, 1581) -> (16265, 20814)'
 
     - 10 missing entries in student solution, including:
-      '(17005, 12048) -> (17005, 14179) -> (17005, 18081) -> (17005, 20740)'
+      '(11750, 9387) -> (11750, 14496) -> (11750, 16164) -> (11750, 17810)'
 
 
     - failed on trial 1 of 50
@@ -1194,10 +974,10 @@ Test 3b: random vertical line segments
     - number of entries in student   solution: 1
     - number of entries in reference solution: 15
     - 1 extra entry in student solution:
-      '(20413, 1964) -> (15681, 20967)'
+      '(12670, 1472) -> (16900, 20900)'
 
     - 15 missing entries in student solution, including:
-      '(17413, 10453) -> (17413, 11016) -> (17413, 13039) -> (17413, 19576)'
+      '(14676, 8861) -> (14676, 11532) -> (14676, 15020) -> (14676, 20806)'
 
 
     - failed on trial 1 of 5
@@ -1462,106 +1242,106 @@ provide access to the x- and y-coordinates).
 Test 9: random line segments, none vertical or horizontal
   *  1 random line segment
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (1819, 3058) -> (7021, 5668)
-    - reference segment 0: (1819, 3058) -> (7021, 5668) -> (8177, 6248) -> (9911, 7118)
+    - student   segment 0: (4536, 9323) -> (5256, 10475)
+    - reference segment 0: (4536, 9323) -> (5256, 10475) -> (8136, 15083) -> (9576, 17387)
 
     - number of entries in student   solution: 1
     - number of entries in reference solution: 1
     - 1 extra entry in student solution:
-      '(1819, 3058) -> (7021, 5668)'
+      '(4536, 9323) -> (5256, 10475)'
 
     - 1 missing entry in student solution:
-      '(1819, 3058) -> (7021, 5668) -> (8177, 6248) -> (9911, 7118)'
+      '(4536, 9323) -> (5256, 10475) -> (8136, 15083) -> (9576, 17387)'
 
 
     - failed on trial 1 of 500
      4
-      7021  5668
-      8177  6248
-      9911  7118
-      1819  3058
+      5256 10475
+      9576 17387
+      8136 15083
+      4536  9323
 
   *  5 random line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 3: (7454, 2711) -> (14470, 10431)
-    - reference segment 3: (5700, 781) -> (7454, 2711) -> (9208, 4641) -> (14470, 10431)
+    - student   segment 2: (2339, 9768) -> (12923, 15648)
+    - reference segment 2: (1457, 9278) -> (2339, 9768) -> (4103, 10748) -> (12923, 15648)
 
     - number of entries in student   solution: 5
     - number of entries in reference solution: 5
     - 1 extra entry in student solution:
-      '(7454, 2711) -> (14470, 10431)'
+      '(2339, 9768) -> (12923, 15648)'
 
     - 1 missing entry in student solution:
-      '(5700, 781) -> (7454, 2711) -> (9208, 4641) -> (14470, 10431)'
+      '(1457, 9278) -> (2339, 9768) -> (4103, 10748) -> (12923, 15648)'
 
 
-    - failed on trial 1 of 500
+    - failed on trial 2 of 500
      20
-      4928  6745
-      6185  1696
-      7454  2711
-     13380  8409
-      8987  4543
-      9208  4641
-     14470 10431
-     11968  8901
-     16591 16340
-     11808  8852
-     14746 12745
-     11789  7390
-     12723  8339
-     13270  9869
-     15115 13464
-     15819 10506
-      5700   781
-      7328  7480
-     14193  9108
-     16632 11205
+      4809  4658
+     21184  9778
+     13363  7600
+       328  3970
+     17308 13074
+      4288  7194
+     13896 15682
+     15572 12290
+      5508  5506
+      8774  9467
+      4103 10748
+      8304  8898
+     10802 10735
+      2339  9768
+     12923 15648
+     12968 11114
+      3197  5980
+      1197  4212
+      9281  9784
+      1457  9278
 
   * 25 random line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 2: (6049, 6707) -> (16825, 8879)
-    - reference segment 2: (661, 5621) -> (6049, 6707) -> (14131, 8336) -> (16825, 8879)
+    - student   segment 0: (7732, 7237) -> (15796, 7475)
+    - reference segment 0: (3124, 7101) -> (7732, 7237) -> (8308, 7254) -> (15796, 7475)
 
     - number of entries in student   solution: 25
     - number of entries in reference solution: 25
-    - 6 extra entries in student solution, including:
-      '(1018, 7949) -> (23282, 19035)'
+    - 7 extra entries in student solution, including:
+      '(6593, 12538) -> (8330, 15130)'
 
-    - 6 missing entries in student solution, including:
-      '(50, 7467) -> (1018, 7949) -> (13602, 14215) -> (23282, 19035)'
+    - 7 missing entries in student solution, including:
+      '(5130, 10792) -> (5320, 11302) -> (5814, 12628) -> (6441, 14311)'
 
 
     - failed on trial 1 of 100
 
   * 50 random line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 6: (2290, 4933) -> (12562, 6445)
-    - reference segment 6: (578, 4681) -> (2290, 4933) -> (11706, 6319) -> (12562, 6445)
+    - student   segment 1: (14070, 13206) -> (17198, 13434)
+    - reference segment 1: (12506, 13092) -> (14070, 13206) -> (16416, 13377) -> (17198, 13434)
 
     - number of entries in student   solution: 50
     - number of entries in reference solution: 50
-    - 12 extra entries in student solution, including:
-      '(9779, 14530) -> (11689, 16266)'
+    - 18 extra entries in student solution, including:
+      '(14963, 17486) -> (19793, 20866)'
 
-    - 12 missing entries in student solution, including:
-      '(7860, 12150) -> (10686, 13926) -> (15396, 16886) -> (16338, 17478)'
+    - 18 missing entries in student solution, including:
+      '(13031, 16134) -> (14963, 17486) -> (17861, 19514) -> (19793, 20866)'
 
 
     - failed on trial 1 of 15
 
   * 100 random line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 11: (10146, 11360) -> (14742, 12350)
-    - reference segment 9: (8614, 11030) -> (10146, 11360) -> (13210, 12020) -> (14742, 12350)
+    - student   segment 1: (11122, 12794) -> (18202, 12866)
+    - reference segment 0: (7582, 12758) -> (11122, 12794) -> (14662, 12830) -> (18202, 12866)
 
     - number of entries in student   solution: 103
     - number of entries in reference solution: 100
-    - 27 extra entries in student solution, including:
-      '(14715, 17802) -> (20827, 17802)'
+    - 24 extra entries in student solution, including:
+      '(8990, 16237) -> (11662, 16237)'
 
-    - 24 missing entries in student solution, including:
-      '(8820, 13014) -> (10323, 14655) -> (10824, 15202) -> (12327, 16843)'
+    - 21 missing entries in student solution, including:
+      '(6313, 13337) -> (9437, 13633) -> (11780, 13855) -> (14904, 14151)'
 
 
     - failed on trial 1 of 2
@@ -1571,8 +1351,333 @@ Test 9: random line segments, none vertical or horizontal
 Test 10: random line segments
   *  1 random line segment
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (6770, 4113) -> (7055, 4263)
-    - reference segment 0: (6770, 4113) -> (7055, 4263) -> (9525, 5563) -> (10
+    - student   segment 0: (6558, 9535) -> (6816, 9637)
+    - reference segment 0: (6558, 9535) -> (6816, 9637) -> (8149, 10164) -> (8321, 10232)
+
+    - number of entries in student   solution: 1
+    - number of entries in reference solution: 1
+    - 1 extra entry in student solution:
+      '(6558, 9535) -> (6816, 9637)'
+
+    - 1 missing entry in student solution:
+      '(6558, 9535) -> (6816, 9637) -> (8149, 10164) -> (8321, 10232)'
+
+
+    - failed on trial 1 of 500
+     4
+      6558  9535
+      8149 10164
+      8321 10232
+      6816  9637
+
+  *  5 random line segments
+    - segments() contains a subsegment of a segment in reference solution
+    - student   segment 3: (4516, 5892) -> (5524, 10512)
+    - reference segment 3: (4444, 5562) -> (4516, 5892) -> (5464, 10237) -> (5524, 10512)
+
+    - number of entries in student   solution: 5
+    - number of entries in reference solution: 5
+    - 1 extra entry in student solution:
+      '(4516, 5892) -> (5524, 10512)'
+
+    - 1 missing entry in student solution:
+      '(4444, 5562) -> (4516, 5892) -> (5464, 10237) -> (5524, 10512)'
+
+
+    - failed on trial 1 of 500
+     20
+      8322 10008
+     10023 11478
+      6864  8748
+     12087 13719
+      7453  4749
+      7399  4218
+      4956  6533
+      7723  7404
+      5464 10237
+     10266 11688
+      3781  4383
+      7651  6696
+      4516  5892
+     11121 13467
+     11466 13557
+      5524 10512
+     12064 13713
+      4444  5562
+      5238  7049
+      4392  5501
+
+  * 25 random line segments
+    - segments() contains a subsegment of a segment in reference solution
+    - student   segment 3: (3294, 13017) -> (5634, 13317)
+    - reference segment 4: (1188, 12747) -> (3294, 13017) -> (4932, 13227) -> (5634, 13317)
+
+    - number of entries in student   solution: 24
+    - number of entries in reference solution: 25
+    - 5 extra entries in student solution, including:
+      '(3294, 13017) -> (5634, 13317)'
+
+    - 6 missing entries in student solution, including:
+      '(1188, 12747) -> (3294, 13017) -> (4932, 13227) -> (5634, 13317)'
+
+
+    - failed on trial 1 of 100
+
+  * 50 random line segments
+    - segments() contains a subsegment of a segment in reference solution
+    - student   segment 2: (10128, 7364) -> (11752, 7567)
+    - reference segment 3: (9456, 7280) -> (10128, 7364) -> (11696, 7560) -> (11752, 7567)
+
+    - number of entries in student   solution: 45
+    - number of entries in reference solution: 50
+    - 14 extra entries in student solution, including:
+      '(3920, 12329) -> (4770, 12975)'
+
+    - 19 missing entries in student solution, including:
+      '(13799, 12912) -> (13799, 14012) -> (13799, 14232) -> (13799, 14292)'
+
+
+    - failed on trial 1 of 15
+
+  * 100 random line segments
+    - segments() contains a subsegment of a segment in reference solution
+    - student   segment 3: (5383, 10982) -> (9583, 11222)
+    - reference segment 17: (2933, 10842) -> (5383, 10982) -> (6713, 11058) -> (9583, 11222)
+
+    - number of entries in student   solution: 75
+    - number of entries in reference solution: 100
+    - 27 extra entries in student solution, including:
+      '(9870, 14251) -> (8506, 14871)'
+
+    - 52 missing entries in student solution, including:
+      '(7898, 14871) -> (8506, 14871) -> (8602, 14871) -> (8826, 14871)'
+
+
+    - failed on trial 1 of 2
+
+==> FAILED
+
+Test 11: random distinct points in a given range
+  * 5 random points in a 10-by-10 grid
+    - segments() contains a subsegment of a segment in reference solution
+    - student   segment 0: (9, 1) -> (6, 4)
+    - reference segment 0: (9, 1) -> (8, 2) -> (6, 4) -> (2, 8)
+
+    - number of entries in student   solution: 1
+    - number of entries in reference solution: 1
+    - 1 extra entry in student solution:
+      '(9, 1) -> (6, 4)'
+
+    - 1 missing entry in student solution:
+      '(9, 1) -> (8, 2) -> (6, 4) -> (2, 8)'
+
+
+    - failed on trial 142 of 500
+     5
+         1     5
+         6     4
+         9     1
+         8     2
+         2     8
+
+  * 10 random points in a 10-by-10 grid
+    - number of entries in student   solution: 2
+    - number of entries in reference solution: 0
+    - 2 extra entries in student solution, including:
+      '(0, 7) -> (5, 9)'
+
+
+    - failed on trial 1 of 500
+     10
+         3     7
+         6     8
+         0     7
+         5     0
+         5     7
+         4     0
+         6     5
+         4     9
+         5     9
+         6     6
+
+  * 50 random points in a 10-by-10 grid
+    - segments() contains the same segment more than once
+    - segment 1: (2, 1) -> (8, 9)
+    - segment 5: (2, 1) -> (8, 9)
+
+    - segments() contains a subsegment of a segment in reference solution
+    - student   segment 40: (3, 2) -> (9, 8)
+    - reference segment 15: (2, 1) -> (3, 2) -> (4, 3) -> (7, 6) -> (9, 8)
+
+    - number of entries in student   solution: 74
+    - number of entries in reference solution: 33
+    - 69 extra entries in student solution, including:
+      '(0, 7) -> (9, 8)'
+
+    - 28 missing entries in student solution, including:
+      '(0, 9) -> (2, 9) -> (3, 9) -> (4, 9) -> (5, 9) -> (6, 9) -> (8, 9)'
+
+
+    - failed on trial 1 of 100
+
+  * 90 random points in a 10-by-10 grid
+    - segments() contains the same segment more than once
+    - segment 2: (2, 0) -> (8, 9)
+    - segment 3: (2, 0) -> (8, 9)
+
+    - segments() contains a subsegment of a segment in reference solution
+    - student   segment 25: (8, 1) -> (1, 8)
+    - reference segment 24: (9, 0) -> (8, 1) -> (7, 2) -> (6, 3) -> (5, 4) -> (4, 5) -> (3, 6) -> (2, 7) -> (1, 8) -> (0, 9)
+
+    - number of entries in student   solution: 103
+    - number of entries in reference solution: 124
+    - 93 extra entries in student solution, including:
+      '(9, 3) -> (0, 9)'
+
+    - 114 missing entries in student solution, including:
+      '(0, 9) -> (2, 9) -> (4, 9) -> (5, 9) -> (6, 9) -> (7, 9) -> (8, 9) -> (9, 9)'
+
+
+    - failed on trial 1 of 50
+
+  * 200 random points in a 50-by-50 grid
+    - segments() contains the same segment more than once
+    - segment 11: (40, 1) -> (39, 49)
+    - segment 17: (40, 1) -> (39, 49)
+
+    - segments() contains a subsegment of a segment in reference solution
+    - student   segment 42: (36, 6) -> (36, 44)
+    - reference segment 218: (36, 1) -> (36, 6) -> (36, 23) -> (36, 44)
+
+    - number of entries in student   solution: 1371
+    - number of entries in reference solution: 227
+    - 1353 extra entries in student solution, including:
+      '(1, 47) -> (38, 49)'
+
+    - 209 missing entries in student solution, including:
+      '(18, 49) -> (29, 49) -> (38, 49) -> (39, 49)'
+
+
+    - failed on trial 1 of 10
+
+==> FAILED
+
+Test 12: m*n points on an m-by-n grid
+  * 3-by-3 grid
+    - segments() contains the same segment more than once
+    - segment 2: (0, 0) -> (2, 2)
+    - segment 3: (0, 0) -> (2, 2)
+
+    - number of entries in student   solution: 4
+    - number of entries in reference solution: 0
+    - 4 extra entries in student solution, including:
+      '(0, 1) -> (2, 2)'
+
+
+  * 4-by-4 grid
+    - segments() contains the same segment more than once
+    - segment 0: (2, 0) -> (2, 3)
+    - segment 1: (2, 0) -> (2, 3)
+
+    - number of entries in student   solution: 8
+    - number of entries in reference solution: 10
+    - 6 extra entries in student solution, including:
+      '(3, 1) -> (1, 3)'
+
+    - 8 missing entries in student solution, including:
+      '(0, 3) -> (1, 3) -> (2, 3) -> (3, 3)'
+
+
+  * 5-by-5 grid
+    - segments() contains the same segment more than once
+    - segment 2: (1, 0) -> (3, 4)
+    - segment 4: (1, 0) -> (3, 4)
+
+    - number of entries in student   solution: 20
+    - number of entries in reference solution: 16
+    - 18 extra entries in student solution, including:
+      '(4, 3) -> (0, 4)'
+
+    - 14 missing entries in student solution, including:
+      '(0, 4) -> (1, 4) -> (2, 4) -> (3, 4) -> (4, 4)'
+
+
+  * 10-by-10 grid
+    - segments() contains the same segment more than once
+    - segment 1: (3, 0) -> (8, 9)
+    - segment 2: (3, 0) -> (8, 9)
+
+    - segments() contains a subsegment of a segment in reference solution
+    - student   segment 26: (9, 0) -> (1, 8)
+    - reference segment 33: (9, 0) -> (8, 1) -> (7, 2) -> (6, 3) -> (5, 4) -> (4, 5) -> (3, 6) -> (2, 7) -> (1, 8) -> (0, 9)
+
+    - number of entries in student   solution: 104
+    - number of entries in reference solution: 154
+    - 93 extra entries in student solution, including:
+      '(9, 2) -> (0, 9)'
+
+    - 143 missing entries in student solution, including:
+      '(0, 9) -> (1, 9) -> (2, 9) -> (3, 9) -> (4, 9) -> (5, 9) -> (6, 9) -> (7, 9) -> (8, 9) -> (9, 9)'
+
+
+  * 20-by-20 grid
+    - segments() contains the same segment more than once
+    - segment 1: (3, 0) -> (18, 19)
+    - segment 2: (3, 0) -> (18, 19)
+
+    - number of entries in student   solution: 472
+    - number of entries in reference solution: 2446
+    - 467 extra entries in student solution, including:
+      '(19, 3) -> (0, 19)'
+
+    - 2441 missing entries in student solution, including:
+      '(0, 19) -> (1, 19) -> (2, 19) -> (3, 19) -> (4, 19) -> (5, 19) -> (6, 19) -> (7, 19) -> (8, 19) -> (9, 19) -> (10, 19) -> (11, 19) -> (12, 19) -> (13, 19) -> (14, 19) -> (15, 19) -> (16, 19) -> (17, 19) -> (18, 19) -> (19, 19)'
+
+
+  * 5-by-4 grid
+    - segments() contains the same segment more than once
+    - segment 1: (1, 0) -> (3, 3)
+    - segment 2: (1, 0) -> (3, 3)
+
+    - number of entries in student   solution: 14
+    - number of entries in reference solution: 13
+    - 13 extra entries in student solution, including:
+      '(4, 1) -> (1, 3)'
+
+    - 12 missing entries in student solution, including:
+      '(0, 3) -> (1, 3) -> (2, 3) -> (3, 3) -> (4, 3)'
+
+
+  * 6-by-4 grid
+    - segments() contains the same segment more than once
+    - segment 8: (0, 0) -> (5, 3)
+    - segment 13: (0, 0) -> (5, 3)
+
+    - number of entries in student   solution: 18
+    - number of entries in reference solution: 16
+    - 15 extra entries in student solution, including:
+      '(5, 1) -> (1, 3)'
+
+    - 13 missing entries in student solution, including:
+      '(0, 3) -> (1, 3) -> (2, 3) -> (3, 3) -> (4, 3) -> (5, 3)'
+
+
+  * 10-by-4 grid
+    - segments() contains the same segment more than once
+    - segment 1: (1, 0) -> (8, 3)
+    - segment 3: (1, 0) -> (8, 3)
+
+    - number of entries in student   solution: 34
+    - number of entries in reference solution: 38
+    - 33 extra entries in student solution, including:
+      '(9, 1) -> (1, 3)'
+
+    - 37 missing entries in student solution, including:
+      '(0, 3) -> (1, 3) -> (2, 3) -> (3, 3) -> (4, 3) -> (5, 3) -> (6, 3) -> (7, 3) -> (8, 3) -> (9, 3)'
+
+
+  * 15-by-4 grid
+    - segments()
 
 ...
 

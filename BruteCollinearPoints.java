@@ -17,7 +17,7 @@ public class BruteCollinearPoints {
     private Point[] points;
 
     public BruteCollinearPoints(Point[] points) {
-        if (points == null || points.length == 0) {
+        if (points.length == 0) {
             throw new IllegalArgumentException("illegal point argument");
         }
         this.points = points;
@@ -57,19 +57,13 @@ public class BruteCollinearPoints {
                             if (firstSlope == secondSlope
                                     && secondSlope
                                     == thirdSlope) { // we only care only if all four are collinear
-                                if (!arrayList.contains(this.points[i])) {
-                                    arrayList.add(this.points[i]);
-                                }
-                                if (!arrayList
-                                        .contains(this.points[j])) {
-                                    arrayList.add(this.points[j]);
-                                }
-                                if (!arrayList
-                                        .contains(this.points[k])) {
-                                    arrayList.add(this.points[k]);
-                                }
-                                if (!arrayList
+                                if (!arrayList.contains(this.points[i]) && !arrayList
+                                        .contains(this.points[j]) && !arrayList
+                                        .contains(this.points[k]) && !arrayList
                                         .contains(this.points[m])) {
+                                    arrayList.add(this.points[i]);
+                                    arrayList.add(this.points[j]);
+                                    arrayList.add(this.points[k]);
                                     arrayList.add(this.points[m]);
                                 }
 
@@ -126,7 +120,7 @@ public class BruteCollinearPoints {
         while (counter < points.length) {
             int it = 0;
             for (int m = counter; m < counter + 4; m++) {
-                if (m <= points.length - 1) {
+                if (m < points.length) {
                     toUse[it] = points[m];
                     StdDraw.show();
                     it++;
@@ -134,17 +128,14 @@ public class BruteCollinearPoints {
                         it = 0;
                         BruteCollinearPoints collinear = new BruteCollinearPoints(toUse);
                         for (LineSegment segment : collinear.segments()) {
-                            if (collinear.numberOfSegments() != 0) {
-                                StdOut.println(segment);
+                            StdOut.println(segment);
+                            if (segment != null) {
                                 segment.draw();
                             }
                         }
                         toUse = new Point[4];
                         StdDraw.show();
                     }
-                }
-                else {
-                    break;
                 }
             }
             counter += 4;

@@ -60,13 +60,13 @@
     <configuration name="BruteCollinearPoints" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="BruteCollinearPoints" />
       <module name="Algorithms, Part I" />
-      <option name="PROGRAM_PARAMETERS" value="input8.txt" />
+      <option name="PROGRAM_PARAMETERS" value="rs1423.txt" />
       <method v="2" />
     </configuration>
     <configuration name="FastCollinearPoints" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="FastCollinearPoints" />
       <module name="Algorithms, Part I" />
-      <option name="PROGRAM_PARAMETERS" value="input8.txt" />
+      <option name="PROGRAM_PARAMETERS" value="input20.txt" />
       <method v="2" />
     </configuration>
     <configuration name="Point" type="Application" factoryName="Application">
@@ -101,24 +101,9 @@
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
-          <line>129</line>
-          <option name="timeStamp" value="89" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
-          <line>138</line>
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
-          <line>123</line>
-          <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
-          <line>135</line>
-          <option name="timeStamp" value="92" />
+          <url>file://$PROJECT_DIR$/FastCollinearPoints.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="96" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
