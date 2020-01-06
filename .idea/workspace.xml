@@ -102,8 +102,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/FastCollinearPoints.java</url>
-          <line>134</line>
-          <option name="timeStamp" value="52" />
+          <line>122</line>
+          <option name="timeStamp" value="59" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
