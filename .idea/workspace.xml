@@ -56,7 +56,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.FastCollinearPoints">
+  <component name="RunManager" selected="Application.BruteCollinearPoints">
     <configuration name="BruteCollinearPoints" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="BruteCollinearPoints" />
       <module name="Algorithms, Part I" />
@@ -96,16 +96,36 @@
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="48" />
+          <url>file://$PROJECT_DIR$/FastCollinearPoints.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/FastCollinearPoints.java</url>
-          <line>122</line>
-          <option name="timeStamp" value="59" />
+          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
+          <line>129</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
+          <line>138</line>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
+          <line>123</line>
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
+          <line>135</line>
+          <option name="timeStamp" value="92" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="collinear.segments()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

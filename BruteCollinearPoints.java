@@ -17,13 +17,13 @@ public class BruteCollinearPoints {
     private Point[] points;
 
     public BruteCollinearPoints(Point[] points) {
-        if (points.length == 0) {
+        if (points == null || points.length == 0) {
             throw new IllegalArgumentException("illegal point argument");
         }
         this.points = points;
         for (int i = 0; i < this.points.length; i++) {
             for (int n = 0; n < i; n++) {
-                if (points[i] == null) {
+                if (points[n] == null) {
                     throw new IllegalArgumentException("null point argument");
                 }
                 if (n != i && points[n].compareTo(points[i]) == 0) {
@@ -36,18 +36,6 @@ public class BruteCollinearPoints {
     // the number of line segments
     public int numberOfSegments() {
         return segments().length; // if this is one, then all four points are collinear
-    }
-
-    private class PointWithOriginSlope {
-        private Point origin;
-        private Point point;
-        private double slopeToOrigin;
-
-        public PointWithOriginSlope(Point origin, Point point, double slopeToOrigin) {
-            this.origin = origin;
-            this.point = point;
-            this.slopeToOrigin = slopeToOrigin;
-        }
     }
 
     // the line segments
@@ -69,13 +57,19 @@ public class BruteCollinearPoints {
                             if (firstSlope == secondSlope
                                     && secondSlope
                                     == thirdSlope) { // we only care only if all four are collinear
-                                if (!arrayList.contains(this.points[i]) && !arrayList
-                                        .contains(this.points[j]) && !arrayList
-                                        .contains(this.points[k]) && !arrayList
-                                        .contains(this.points[m])) {
+                                if (!arrayList.contains(this.points[i])) {
                                     arrayList.add(this.points[i]);
+                                }
+                                if (!arrayList
+                                        .contains(this.points[j])) {
                                     arrayList.add(this.points[j]);
+                                }
+                                if (!arrayList
+                                        .contains(this.points[k])) {
                                     arrayList.add(this.points[k]);
+                                }
+                                if (!arrayList
+                                        .contains(this.points[m])) {
                                     arrayList.add(this.points[m]);
                                 }
 
@@ -94,7 +88,8 @@ public class BruteCollinearPoints {
             return toReturn;
         }
         else {
-            return null;
+            LineSegment[] toReturn = new LineSegment[0];
+            return toReturn;
         }
     }
 
@@ -128,21 +123,28 @@ public class BruteCollinearPoints {
         // print and draw the line segments
         int counter = 0;
         Point[] toUse = new Point[4];
-        while (counter != points.length) {
+        while (counter < points.length) {
             int it = 0;
             for (int m = counter; m < counter + 4; m++) {
-                toUse[it] = points[m];
-                StdDraw.show();
-                it++;
-                if (it % 4 == 0) {
-                    it = 0;
-                    BruteCollinearPoints collinear = new BruteCollinearPoints(toUse);
-                    for (LineSegment segment : collinear.segments()) {
-                        StdOut.println(segment);
-                        segment.draw();
-                    }
-                    toUse = new Point[4];
+                if (m <= points.length - 1) {
+                    toUse[it] = points[m];
                     StdDraw.show();
+                    it++;
+                    if (it % 4 == 0) {
+                        it = 0;
+                        BruteCollinearPoints collinear = new BruteCollinearPoints(toUse);
+                        for (LineSegment segment : collinear.segments()) {
+                            if (collinear.numberOfSegments() != 0) {
+                                StdOut.println(segment);
+                                segment.draw();
+                            }
+                        }
+                        toUse = new Point[4];
+                        StdDraw.show();
+                    }
+                }
+                else {
+                    break;
                 }
             }
             counter += 4;

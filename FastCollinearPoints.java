@@ -17,12 +17,15 @@ public class FastCollinearPoints {
     private Point[] points;
 
     public FastCollinearPoints(Point[] points) {
-        if (points.length == 0) {
+        if (points == null || points.length == 0) {
             throw new IllegalArgumentException("illegal point argument");
         }
         this.points = points;
         for (int i = 0; i < this.points.length; i++) {
             for (int n = 0; n < i; n++) {
+                if (points[n] == null) {
+                    throw new IllegalArgumentException("null point argument");
+                }
                 if (points[n].compareTo(points[i]) == 0) {
                     throw new IllegalArgumentException("illegal duplicate point argument");
                 }
@@ -86,11 +89,14 @@ public class FastCollinearPoints {
                     if (currCount >= 3 && !collinearPoints
                             .contains(newPoint)) {
                         // lineSegments.add(newLine);
-                        collinearPoints.add(newPoint);
+
                         if (slopes[n].slopeToOrigin == slopes[0].slopeToOrigin) {
                             collinearPoints
                                     .add(new PointWithOriginSlope(slopes[0].origin, slopes[0].point,
                                                                   slopes[0].slopeToOrigin));
+                        }
+                        else {
+                            collinearPoints.add(newPoint);
                         }
                     }
                 }
@@ -122,9 +128,11 @@ public class FastCollinearPoints {
                         // sort single group
                         Arrays.sort(allInGroup, pointComparator());
                         // make and add line segment using min and max
-                        lineSegments
-                                .add(new LineSegment(allInGroup[0],
-                                                     allInGroup[allInGroup.length - 1]));
+                        LineSegment ls = new LineSegment(allInGroup[0],
+                                                         allInGroup[allInGroup.length - 1]);
+                        if (!lineSegments.contains(ls)) {
+                            lineSegments.add(ls);
+                        }
                         // reset vector
                         singleGroup = new ArrayList<Point>();
                         singleGroup.add(collinearPoints.get(n).origin);
@@ -137,9 +145,11 @@ public class FastCollinearPoints {
                         // sort single group
                         Arrays.sort(allInGroup, pointComparator());
                         // make and add line segment using min and max
-                        lineSegments
-                                .add(new LineSegment(allInGroup[0],
-                                                     allInGroup[allInGroup.length - 1]));
+                        LineSegment ls = new LineSegment(allInGroup[0],
+                                                         allInGroup[allInGroup.length - 1]);
+                        if (!lineSegments.contains(ls)) {
+                            lineSegments.add(ls);
+                        }
                     }
                     // add to new single group
 
@@ -148,11 +158,11 @@ public class FastCollinearPoints {
                     // add to single group
                     singleGroup.add(collinearPoints.get(n).origin);
                     singleGroup.add(collinearPoints.get(n).point);
+                    previousSlope = collinearPoints.get(n).slopeToOrigin;
                 }
             }
 
         }
-
         return lineSegments.toArray(new LineSegment[lineSegments.size()]);
     }
 
