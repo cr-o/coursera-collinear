@@ -73,17 +73,25 @@ public class FastCollinearPoints {
         ArrayList<PointWithOriginSlope> finalCheck = new ArrayList<PointWithOriginSlope>();
         ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
         for (int n = 0; n < slopes.length; n++) {
+            PointWithOriginSlope newPoint = new PointWithOriginSlope(slopes[n].origin,
+                                                                     slopes[n].point,
+                                                                     slopes[n].slopeToOrigin);
             if (n == 0) {
                 prevSlope = slopes[0].slopeToOrigin;
             }
             else {
                 if (slopes[n].slopeToOrigin == prevSlope) {
                     currCount += 1;
-                    if (currCount >= 3 && !lineSegments
-                            .contains(new LineSegment(slopes[n].origin, slopes[n].point))) {
-                        lineSegments.add(new LineSegment(slopes[n].origin, slopes[n].point));
-                        finalCheck.add(new PointWithOriginSlope(slopes[n].origin, slopes[n].point,
-                                                                slopes[n].slopeToOrigin));
+                    // LineSegment newLine = new LineSegment(slopes[n].origin, slopes[n].point);
+                    if (currCount >= 3 && !finalCheck
+                            .contains(newPoint)) {
+                        // lineSegments.add(newLine);
+                        finalCheck.add(newPoint);
+                        if (slopes[n].slopeToOrigin == slopes[0].slopeToOrigin) {
+                            finalCheck
+                                    .add(new PointWithOriginSlope(slopes[0].origin, slopes[0].point,
+                                                                  slopes[0].slopeToOrigin));
+                        }
                     }
                 }
                 else {
@@ -92,6 +100,7 @@ public class FastCollinearPoints {
             }
             prevSlope = slopes[n].slopeToOrigin;
         }
+
         return lineSegments.toArray(new LineSegment[lineSegments.size()]);
     }
 
