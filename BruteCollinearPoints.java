@@ -52,61 +52,56 @@ public class BruteCollinearPoints {
 
     // the line segments
     public LineSegment[] segments() {
-        ArrayList<PointWithOriginSlope> arrayList = new ArrayList<PointWithOriginSlope>();
-        ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
-
+        ArrayList<Point> arrayList = new ArrayList<Point>();
         int pointsLength = this.points.length;
+        double firstSlope = 0.0;
+        double secondSlope = 0.0;
+        double thirdSlope = 0.0;
         for (int i = 0; i < pointsLength; i++) {
             for (int j = 0; j < pointsLength; j++) {
                 for (int k = 0; k < pointsLength; k++) {
                     for (int m = 0; m < pointsLength; m++) {
                         if (i != j && i != k && i != m && j != k && j != m && k != m) {
-                            double firstSlope = this.points[i].slopeTo(this.points[m]);
-                            // if (firstSlope == this.points[i].slopeTo(this.points[k])
-                            //         && firstSlope == this.points[k].slopeTo(this.points[m])) {
-                            arrayList.add(new PointWithOriginSlope(this.points[i],
-                                                                   this.points[m], firstSlope));
-                            // lineSegments.add(new LineSegment(this.points[i], this.points[m]));
+                            // three slopes between p and q, between p and r, and between p and s are all equal.
+                            firstSlope = this.points[i].slopeTo(this.points[j]);
+                            secondSlope = this.points[i].slopeTo(this.points[k]);
+                            thirdSlope = this.points[i].slopeTo(this.points[m]);
+                            if (firstSlope == secondSlope
+                                    && secondSlope
+                                    == thirdSlope) { // we only care only if all four are collinear
+                                if (!arrayList.contains(this.points[i]) && !arrayList
+                                        .contains(this.points[j]) && !arrayList
+                                        .contains(this.points[k]) && !arrayList
+                                        .contains(this.points[m])) {
+                                    arrayList.add(this.points[i]);
+                                    arrayList.add(this.points[j]);
+                                    arrayList.add(this.points[k]);
+                                    arrayList.add(this.points[m]);
+                                }
 
-                            //}
+                            }
                         }
                     }
                 }
             }
         }
-        PointWithOriginSlope[] origins = arrayList
-                .toArray(new PointWithOriginSlope[arrayList.size()]);
-
-        // sort the values by origin point
-        Arrays.sort(origins, originComparator());
-
-        PointWithOriginSlope[] toCheck = Arrays.copyOfRange(origins, 0, 6);
-        origins = null;
-        double prevSlope = 0.0;
-        Arrays.sort(toCheck, slopeComparator());
-        ArrayList<Point> unique = new ArrayList<Point>();
-
-        for (int it = 0; it < 6; it++) {
-            if (it == 0) {
-                unique.add(toCheck[it].point);
-            }
-            else {
-                if (!unique.contains(toCheck[it].point)) {
-                    lineSegments.add(new LineSegment(toCheck[it].origin, toCheck[it].point));
-                    unique.add(toCheck[it].point);
-                }
-
-            }
+        if (arrayList.size() == 4) {
+            Point[] collinearPts = arrayList.toArray(new Point[arrayList.size()]);
+            Arrays.sort(collinearPts, pointComparator());
+            LineSegment[] toReturn = new LineSegment[1];
+            LineSegment finalSeg = new LineSegment(collinearPts[0], collinearPts[3]);
+            toReturn[0] = finalSeg;
+            return toReturn;
         }
-
-        return lineSegments.toArray(new LineSegment[lineSegments.size()]);
-
+        else {
+            return null;
+        }
     }
 
-    private Comparator<PointWithOriginSlope> originComparator() {
-        return new Comparator<PointWithOriginSlope>() {
-            public int compare(PointWithOriginSlope p1, PointWithOriginSlope p2) {
-                return p1.origin.compareTo(p2.origin);
+    private Comparator<Point> pointComparator() {
+        return new Comparator<Point>() {
+            public int compare(Point p1, Point p2) {
+                return p1.compareTo(p2);
             }
         };
     }
