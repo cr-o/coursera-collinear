@@ -100,6 +100,37 @@ public class FastCollinearPoints {
             }
             prevSlope = slopes[n].slopeToOrigin;
         }
+        double previousSlope = 0.0;
+        ArrayList<Point> singleGroup = new ArrayList<Point>();
+        for (int n = 0; n < collinearPoints.size(); n++) {
+            // if a group ended
+            // iterate through previous group
+            if (n == 0) {
+                previousSlope = collinearPoints.get(n).slopeToOrigin;
+                // add to singlegroup
+                singleGroup.add(collinearPoints.get(n).origin);
+                singleGroup.add(collinearPoints.get(n).point);
+            }
+            else {
+                if (previousSlope != collinearPoints.get(n).slopeToOrigin) {
+                    previousSlope = collinearPoints.get(n).slopeToOrigin;
+                    // sort single group
+                    // take min, max
+                    // make and add line segment
+                    // reset single group
+
+                    // add to single group
+                    singleGroup.add(collinearPoints.get(n).origin);
+                    singleGroup.add(collinearPoints.get(n).point);
+                }
+                else {
+                    // add to single group
+                    singleGroup.add(collinearPoints.get(n).origin);
+                    singleGroup.add(collinearPoints.get(n).point);
+                }
+            }
+
+        }
 
         return lineSegments.toArray(new LineSegment[lineSegments.size()]);
     }
