@@ -70,6 +70,7 @@ public class FastCollinearPoints {
         Arrays.sort(slopes, slopeComparator());
         int currCount = 0;
         double prevSlope = 0.0;
+        ArrayList<PointWithOriginSlope> finalCheck = new ArrayList<PointWithOriginSlope>();
         ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
         for (int n = 0; n < slopes.length; n++) {
             if (n == 0) {
@@ -81,6 +82,8 @@ public class FastCollinearPoints {
                     if (currCount >= 3 && !lineSegments
                             .contains(new LineSegment(slopes[n].origin, slopes[n].point))) {
                         lineSegments.add(new LineSegment(slopes[n].origin, slopes[n].point));
+                        finalCheck.add(new PointWithOriginSlope(slopes[n].origin, slopes[n].point,
+                                                                slopes[n].slopeToOrigin));
                     }
                 }
                 else {
@@ -95,6 +98,10 @@ public class FastCollinearPoints {
     private Comparator<PointWithOriginSlope> slopeComparator() {
         return new Comparator<PointWithOriginSlope>() {
             public int compare(PointWithOriginSlope p1, PointWithOriginSlope p2) {
+                double slopeCompare = Double.compare(p1.slopeToOrigin, p2.slopeToOrigin);
+                if (slopeCompare == 0.0) {
+                    return p1.point.compareTo(p2.point);
+                }
                 return Double.compare(p1.slopeToOrigin, p2.slopeToOrigin);
             }
         };
