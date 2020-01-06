@@ -106,14 +106,6 @@ public class BruteCollinearPoints {
         };
     }
 
-    private Comparator<PointWithOriginSlope> slopeComparator() {
-        return new Comparator<PointWithOriginSlope>() {
-            public int compare(PointWithOriginSlope p1, PointWithOriginSlope p2) {
-                return Double.compare(p1.slopeToOrigin, p2.slopeToOrigin);
-            }
-        };
-    }
-
     public static void main(String[] args) {
         // read the n points from a file
         In in = new In(args[0]);
@@ -133,7 +125,6 @@ public class BruteCollinearPoints {
             p.draw();
         }
         StdDraw.show();
-
         // print and draw the line segments
         int counter = 0;
         Point[] toUse = new Point[4];
@@ -141,7 +132,6 @@ public class BruteCollinearPoints {
             int it = 0;
             for (int m = counter; m < counter + 4; m++) {
                 toUse[it] = points[m];
-
                 StdDraw.show();
                 it++;
                 if (it % 4 == 0) {
@@ -152,6 +142,7 @@ public class BruteCollinearPoints {
                         segment.draw();
                     }
                     toUse = new Point[4];
+                    StdDraw.show();
                 }
             }
             counter += 4;
