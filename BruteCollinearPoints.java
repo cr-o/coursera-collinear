@@ -49,24 +49,16 @@ public class BruteCollinearPoints {
             for (int j = 0; j < pointsLength; j++) {
                 for (int k = 0; k < pointsLength; k++) {
                     for (int m = 0; m < pointsLength; m++) {
-                        if (i != j && i != k && i != m && j != k && j != m && k != m) {
-                            // three slopes between p and q, between p and r, and between p and s are all equal.
-                            firstSlope = this.points[i].slopeTo(this.points[j]);
-                            secondSlope = this.points[i].slopeTo(this.points[k]);
-                            thirdSlope = this.points[i].slopeTo(this.points[m]);
-                            if (firstSlope == secondSlope
-                                    && secondSlope
-                                    == thirdSlope) { // we only care only if all four are collinear
-                                if (!arrayList.contains(this.points[i]) && !arrayList
-                                        .contains(this.points[j]) && !arrayList
-                                        .contains(this.points[k]) && !arrayList
-                                        .contains(this.points[m])) {
-                                    arrayList.add(this.points[i]);
-                                    arrayList.add(this.points[j]);
-                                    arrayList.add(this.points[k]);
-                                    arrayList.add(this.points[m]);
-                                }
+                        // three slopes between p and q, between p and r, and between p and s are all equal.
+                        firstSlope = this.points[i].slopeTo(this.points[j]);
+                        secondSlope = this.points[i].slopeTo(this.points[k]);
+                        thirdSlope = this.points[i].slopeTo(this.points[m]);
+                        if (firstSlope == secondSlope
+                                && secondSlope
+                                == thirdSlope) { // we only care only if all four are collinear
 
+                            if (!arrayList.contains(this.points[m])) {
+                                arrayList.add(this.points[m]);
                             }
                         }
                     }
