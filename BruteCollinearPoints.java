@@ -56,7 +56,6 @@ public class BruteCollinearPoints {
                         if (firstSlope == secondSlope
                                 && secondSlope
                                 == thirdSlope) { // we only care only if all four are collinear
-
                             if (!arrayList.contains(this.points[m])) {
                                 arrayList.add(this.points[m]);
                             }
@@ -65,7 +64,7 @@ public class BruteCollinearPoints {
                 }
             }
         }
-        if (arrayList.size() == 4) {
+        if (arrayList.size() != 0) {
             Point[] collinearPts = arrayList.toArray(new Point[arrayList.size()]);
             Arrays.sort(collinearPts, pointComparator());
             LineSegment[] toReturn = new LineSegment[1];

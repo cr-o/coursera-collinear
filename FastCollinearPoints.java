@@ -75,6 +75,7 @@ public class FastCollinearPoints {
         double prevSlope = 0.0;
         ArrayList<PointWithOriginSlope> collinearPoints = new ArrayList<PointWithOriginSlope>();
         ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
+        int firstIndex = 0;
         for (int n = 0; n < slopes.length; n++) {
             PointWithOriginSlope newPoint = new PointWithOriginSlope(slopes[n].origin,
                                                                      slopes[n].point,
@@ -90,7 +91,7 @@ public class FastCollinearPoints {
                             .contains(newPoint)) {
                         // lineSegments.add(newLine);
 
-                        if (slopes[n].slopeToOrigin == slopes[0].slopeToOrigin) {
+                        if (slopes[n].slopeToOrigin == slopes[firstIndex].slopeToOrigin) {
                             collinearPoints
                                     .add(new PointWithOriginSlope(slopes[0].origin, slopes[0].point,
                                                                   slopes[0].slopeToOrigin));
@@ -115,8 +116,10 @@ public class FastCollinearPoints {
             if (n == 0) {
                 previousSlope = collinearPoints.get(n).slopeToOrigin;
                 // add to singlegroup
-                singleGroup.add(collinearPoints.get(n).origin);
-                singleGroup.add(collinearPoints.get(n).point);
+                // singleGroup.add(collinearPoints.get(n).origin);
+                if (!singleGroup.contains(collinearPoints.get(n).point)) {
+                    singleGroup.add(collinearPoints.get(n).point);
+                }
             }
             else {
                 if (previousSlope != collinearPoints.get(n).slopeToOrigin
@@ -135,12 +138,15 @@ public class FastCollinearPoints {
                         }
                         // reset vector
                         singleGroup = new ArrayList<Point>();
-                        singleGroup.add(collinearPoints.get(n).origin);
+                        // singleGroup.add(collinearPoints.get(n).origin);
                         singleGroup.add(collinearPoints.get(n).point);
                     }
                     else {
-                        singleGroup.add(collinearPoints.get(n).origin);
-                        singleGroup.add(collinearPoints.get(n).point);
+                        // singleGroup.add(collinearPoints.get(n).origin);
+                        if (!singleGroup.contains(collinearPoints.get(n).point)) {
+                            singleGroup.add(collinearPoints.get(n).point);
+                        }
+
                         allInGroup = singleGroup.toArray(new Point[singleGroup.size()]);
                         // sort single group
                         Arrays.sort(allInGroup, pointComparator());
