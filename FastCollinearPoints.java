@@ -75,100 +75,154 @@ public class FastCollinearPoints {
         double prevSlope = 0.0;
         ArrayList<PointWithOriginSlope> collinearPoints = new ArrayList<PointWithOriginSlope>();
         ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
-        int firstIndex = 0;
+        boolean firstTimeOverThree = true;
         for (int n = 0; n < slopes.length; n++) {
             PointWithOriginSlope newPoint = new PointWithOriginSlope(slopes[n].origin,
                                                                      slopes[n].point,
                                                                      slopes[n].slopeToOrigin);
             if (n == 0) {
                 prevSlope = slopes[0].slopeToOrigin;
+                firstTimeOverThree = false;
             }
             else {
                 if (slopes[n].slopeToOrigin == prevSlope) {
                     currCount += 1;
+                    if (currCount == 2) {
+                        firstTimeOverThree = true;
+                    }
                     // LineSegment newLine = new LineSegment(slopes[n].origin, slopes[n].point);
-                    if (currCount >= 3 && !collinearPoints
-                            .contains(newPoint)) {
-                        // lineSegments.add(newLine);
-
-                        if (slopes[n].slopeToOrigin == slopes[firstIndex].slopeToOrigin) {
+                    if (currCount >= 3) {
+                        if (firstTimeOverThree) {
+                            PointWithOriginSlope firstAdd = new PointWithOriginSlope(
+                                    slopes[n - currCount].origin,
+                                    slopes[n - currCount].point,
+                                    slopes[n - currCount].slopeToOrigin);
+                            PointWithOriginSlope secAdd = new PointWithOriginSlope(
+                                    slopes[n - currCount + 1].origin,
+                                    slopes[n - currCount + 1].point,
+                                    slopes[n - currCount + 1].slopeToOrigin);
+                            // changed
+                            // now add the first two
+                            if (!collinearPoints
+                                    .contains(firstAdd)) {
+                                // if (slopes[n].slopeToOrigin == slopes[firstIndex].slopeToOrigin) {
+                                collinearPoints
+                                        .add(firstAdd);
+                                //}
+                            }
+                            if (!collinearPoints
+                                    .contains(secAdd)) {
+                                // if (slopes[n].slopeToOrigin == slopes[firstIndex].slopeToOrigin) {
+                                collinearPoints
+                                        .add(secAdd);
+                                //}
+                            }
+                            firstTimeOverThree = false;
+                        }
+                        if (!collinearPoints
+                                .contains(newPoint)) {
+                            // if (slopes[n].slopeToOrigin == slopes[firstIndex].slopeToOrigin) {
                             collinearPoints
-                                    .add(new PointWithOriginSlope(slopes[0].origin, slopes[0].point,
-                                                                  slopes[0].slopeToOrigin));
+                                    .add(newPoint);
+                            //}
                         }
-                        else {
-                            collinearPoints.add(newPoint);
-                        }
+
                     }
+                    // lineSegments.add(newLine);
+                    // else {
+                    //     collinearPoints.add(newPoint);
+                    // }
                 }
                 else {
+                    if (currCount >= 3) {
+                        // sort what was added so far
+                        // loop through what was
+                        ArrayList<Point> bucket = new ArrayList<Point>();
+
+                        for (int j = 0; j < collinearPoints.size(); j++) {
+                            bucket.add(collinearPoints.get(j).origin);
+                            bucket.add(collinearPoints.get(j).point);
+
+                        }
+                        Point[] collinear = bucket
+                                .toArray(new Point[bucket.size()]);
+                        Arrays.sort(collinear, pointComparator());
+                        LineSegment newLine = new LineSegment(collinear[0],
+                                                              collinear[collinear.length
+                                                                      - 1]);
+                        lineSegments.add(newLine);
+
+
+                    }
+                    collinearPoints = new ArrayList<>();
                     currCount = 0;
+                    prevSlope = slopes[n].slopeToOrigin;
+                    firstTimeOverThree = false;
                 }
             }
-            prevSlope = slopes[n].slopeToOrigin;
         }
-        double previousSlope = 0.0;
-        ArrayList<Point> singleGroup = new ArrayList<Point>();
-        Point[] allInGroup;
-        for (int n = 0; n < collinearPoints.size(); n++) {
-            // if a group ended
-            // iterate through previous group
-            if (n == 0) {
-                previousSlope = collinearPoints.get(n).slopeToOrigin;
-                // add to singlegroup
-                // singleGroup.add(collinearPoints.get(n).origin);
-                if (!singleGroup.contains(collinearPoints.get(n).point)) {
-                    singleGroup.add(collinearPoints.get(n).point);
-                }
-            }
-            else {
-                if (previousSlope != collinearPoints.get(n).slopeToOrigin
-                        || n == collinearPoints.size() - 1) {
-                    if (!(n == collinearPoints.size() - 1)) {
-
-                        previousSlope = collinearPoints.get(n).slopeToOrigin;
-                        allInGroup = singleGroup.toArray(new Point[singleGroup.size()]);
-                        // sort single group
-                        Arrays.sort(allInGroup, pointComparator());
-                        // make and add line segment using min and max
-                        LineSegment ls = new LineSegment(allInGroup[0],
-                                                         allInGroup[allInGroup.length - 1]);
-                        if (!lineSegments.contains(ls)) {
-                            lineSegments.add(ls);
-                        }
-                        // reset vector
-                        singleGroup = new ArrayList<Point>();
-                        // singleGroup.add(collinearPoints.get(n).origin);
-                        singleGroup.add(collinearPoints.get(n).point);
-                    }
-                    else {
-                        // singleGroup.add(collinearPoints.get(n).origin);
-                        if (!singleGroup.contains(collinearPoints.get(n).point)) {
-                            singleGroup.add(collinearPoints.get(n).point);
-                        }
-
-                        allInGroup = singleGroup.toArray(new Point[singleGroup.size()]);
-                        // sort single group
-                        Arrays.sort(allInGroup, pointComparator());
-                        // make and add line segment using min and max
-                        LineSegment ls = new LineSegment(allInGroup[0],
-                                                         allInGroup[allInGroup.length - 1]);
-                        if (!lineSegments.contains(ls)) {
-                            lineSegments.add(ls);
-                        }
-                    }
-                    // add to new single group
-
-                }
-                else {
-                    // add to single group
-                    singleGroup.add(collinearPoints.get(n).origin);
-                    singleGroup.add(collinearPoints.get(n).point);
-                    previousSlope = collinearPoints.get(n).slopeToOrigin;
-                }
-            }
-
-        }
+        // double previousSlope = 0.0;
+        // ArrayList<Point> singleGroup = new ArrayList<Point>();
+        // Point[] allInGroup;
+        // for (int n = 0; n < collinearPoints.size(); n++) {
+        //     // if a group ended
+        //     // iterate through previous group
+        //     if (n == 0) {
+        //         previousSlope = collinearPoints.get(n).slopeToOrigin;
+        //         // add to singlegroup
+        //         // singleGroup.add(collinearPoints.get(n).origin);
+        //         if (!singleGroup.contains(collinearPoints.get(n).point)) {
+        //             singleGroup.add(collinearPoints.get(n).point);
+        //         }
+        //     }
+        //     else {
+        //         if (previousSlope != collinearPoints.get(n).slopeToOrigin
+        //                 || n == collinearPoints.size() - 1) {
+        //             if (!(n == collinearPoints.size() - 1)) {
+        //
+        //                 previousSlope = collinearPoints.get(n).slopeToOrigin;
+        //                 allInGroup = singleGroup.toArray(new Point[singleGroup.size()]);
+        //                 // sort single group
+        //                 Arrays.sort(allInGroup, pointComparator());
+        //                 // make and add line segment using min and max
+        //                 LineSegment ls = new LineSegment(allInGroup[0],
+        //                                                  allInGroup[allInGroup.length - 1]);
+        //                 if (!lineSegments.contains(ls)) {
+        //                     lineSegments.add(ls);
+        //                 }
+        //                 // reset vector
+        //                 singleGroup = new ArrayList<Point>();
+        //                 // singleGroup.add(collinearPoints.get(n).origin);
+        //                 singleGroup.add(collinearPoints.get(n).point);
+        //             }
+        //             else {
+        //                 // singleGroup.add(collinearPoints.get(n).origin);
+        //                 if (!singleGroup.contains(collinearPoints.get(n).point)) {
+        //                     singleGroup.add(collinearPoints.get(n).point);
+        //                 }
+        //
+        //                 allInGroup = singleGroup.toArray(new Point[singleGroup.size()]);
+        //                 // sort single group
+        //                 Arrays.sort(allInGroup, pointComparator());
+        //                 // make and add line segment using min and max
+        //                 LineSegment ls = new LineSegment(allInGroup[0],
+        //                                                  allInGroup[allInGroup.length - 1]);
+        //                 if (!lineSegments.contains(ls)) {
+        //                     lineSegments.add(ls);
+        //                 }
+        //             }
+        //             // add to new single group
+        //
+        //         }
+        //         else {
+        //             // add to single group
+        //             singleGroup.add(collinearPoints.get(n).origin);
+        //             singleGroup.add(collinearPoints.get(n).point);
+        //             previousSlope = collinearPoints.get(n).slopeToOrigin;
+        //         }
+        //     }
+        //
+        // }
         return lineSegments.toArray(new LineSegment[lineSegments.size()]);
     }
 
@@ -179,6 +233,14 @@ public class FastCollinearPoints {
             }
         };
     }
+
+    // private Comparator<PointWithOriginSlope> pointComparator() {
+    //     return new Comparator<PointWithOriginSlope>() {
+    //         public int compare(PointWithOriginSlope p1, PointWithOriginSlope p2) {
+    //             return p1.point.compareTo(p2.point);
+    //         }
+    //     };
+    // }
 
     private Comparator<PointWithOriginSlope> slopeComparator() {
         return new Comparator<PointWithOriginSlope>() {
