@@ -54,7 +54,7 @@ public class FastCollinearPoints {
     public LineSegment[] segments() {
         /*
          * Fix horizontal lines
-         * Fix lines that have the same slope but different beginning and end points
+         * Fix lines that have the same slope but different beginning and end points (parallels)
          * */
         ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
         Point origin;
@@ -74,14 +74,14 @@ public class FastCollinearPoints {
                 else if (n == this.points.length - 2) {
                     // at last element
                     if (this.points[n].slopeTo(origin) == this.points[n + 1].slopeTo(origin)) {
-                        if (!toOriginSort.contains(this.points[n])) {
-                            toOriginSort.add(this.points[n]);
-                            counter++;
-                        }
-                        if (!toOriginSort.contains(this.points[n + 1])) {
-                            toOriginSort.add(this.points[n + 1]);
-                            counter++;
-                        }
+                        // if (!toOriginSort.contains(this.points[n])) {
+                        toOriginSort.add(this.points[n]);
+                        counter++;
+                        //}
+                        // if (!toOriginSort.contains(this.points[n + 1])) {
+                        toOriginSort.add(this.points[n + 1]);
+                        counter++;
+                        // }
                         if (counter >= 4) {
                             originSort = toOriginSort.toArray(new Point[toOriginSort.size()]);
                             Arrays.sort(originSort, pointComparator());
@@ -92,14 +92,14 @@ public class FastCollinearPoints {
                 }
                 else {
                     if (this.points[n].slopeTo(origin) == this.points[n + 1].slopeTo(origin)) {
-                        if (!toOriginSort.contains(this.points[n])) {
-                            toOriginSort.add(this.points[n]);
-                            counter++;
-                        }
-                        if (!toOriginSort.contains(this.points[n + 1])) {
-                            toOriginSort.add(this.points[n + 1]);
-                            counter++;
-                        }
+                        // if (!toOriginSort.contains(this.points[n])) {
+                        toOriginSort.add(this.points[n]);
+                        counter++;
+                        // }
+                        // if (!toOriginSort.contains(this.points[n + 1])) {
+                        toOriginSort.add(this.points[n + 1]);
+                        counter++;
+                        // }
                     }
                     else {
                         if (counter >= 4) {
