@@ -59,61 +59,33 @@ public class FastCollinearPoints {
         ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
         Point origin;
         Point[] originSort;
-        int counter = 0;
         for (int i = 0; i < this.points.length; i++) {
             Arrays.sort(this.points, this.points[i].slopeOrder());
             origin = this.points[i];
-            counter = 0;
             ArrayList<Point> toOriginSort = new ArrayList<Point>();
-            toOriginSort.add(origin);
-            for (int n = 0; n < this.points.length - 1; n++) {
-                if (n == i) {
-                    counter++;
-                    toOriginSort.add(this.points[n]);
-                }
-                else if (n == this.points.length - 2) {
-                    // at last element
-                    if (this.points[n].slopeTo(origin) == this.points[n + 1].slopeTo(origin)) {
-                        // if (!toOriginSort.contains(this.points[n])) {
-                        toOriginSort.add(this.points[n]);
-                        counter++;
-                        //}
-                        // if (!toOriginSort.contains(this.points[n + 1])) {
-                        toOriginSort.add(this.points[n + 1]);
-                        counter++;
-                        // }
-                        if (counter >= 4) {
-                            originSort = toOriginSort.toArray(new Point[toOriginSort.size()]);
-                            Arrays.sort(originSort, pointComparator());
-                            lineSegments.add(new LineSegment(originSort[0],
-                                                             originSort[originSort.length - 1]));
-                        }
+            double prevSlope = 0.0;
+            for (int n = 0; n < this.points.length; n++) {
+                double currSlope = origin.slopeTo(this.points[n]);
+                if (n == 0 || prevSlope != currSlope || n == this.points.length - 1) {
+                    // if (!toOriginSort.contains(this.points[n])) {
+                    //}
+                    // if (!toOriginSort.contains(this.points[n + 1])) {
+                    // }
+                    if (toOriginSort.size() >= 3) {
+                        originSort = toOriginSort.toArray(new Point[toOriginSort.size()]);
+                        Arrays.sort(originSort, pointComparator());
+                        System.out.printf("line made");
+                        lineSegments.add(new LineSegment(originSort[0],
+                                                         originSort[originSort.length - 1]));
                     }
+                    toOriginSort = new ArrayList<Point>();
                 }
-                else {
-                    if (this.points[n].slopeTo(origin) == this.points[n + 1].slopeTo(origin)) {
-                        // if (!toOriginSort.contains(this.points[n])) {
-                        toOriginSort.add(this.points[n]);
-                        counter++;
-                        // }
-                        // if (!toOriginSort.contains(this.points[n + 1])) {
-                        toOriginSort.add(this.points[n + 1]);
-                        counter++;
-                        // }
-                    }
-                    else {
-                        if (counter >= 4) {
-                            System.out.println("FOUR");
-                            originSort = toOriginSort.toArray(new Point[toOriginSort.size()]);
-                            Arrays.sort(originSort, pointComparator());
-                            lineSegments.add(new LineSegment(originSort[0],
-                                                             originSort[originSort.length - 1]));
-                        }
-                        counter = 0;
-                        toOriginSort = new ArrayList<Point>();
-                    }
-                }
-                System.out.printf("counter: %d\n", counter);
+
+                toOriginSort.add(this.points[n]);
+
+                prevSlope = currSlope;
+
+                System.out.printf("counter: %d\n", toOriginSort.size());
                 System.out.printf("origin: %s\n", origin.toString());
                 System.out.printf("point: %s\n", this.points[n].toString());
             }

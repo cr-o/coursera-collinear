@@ -97,15 +97,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/FastCollinearPoints.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="125" />
+          <line>92</line>
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/FastCollinearPoints.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="158" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="this.points[n].slopeTo(origin)" language="JAVA" />
-        <watch expression="this.points[n + 1].slopeTo(origin)" language="JAVA" />
+        <watch expression="toSlopeSort;" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
