@@ -56,7 +56,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.FastCollinearPoints">
+  <component name="RunManager" selected="Application.BruteCollinearPoints">
     <configuration name="BruteCollinearPoints" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="BruteCollinearPoints" />
       <module name="Algorithms, Part I" />
@@ -94,6 +94,26 @@
           <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
           <line>15</line>
           <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="160" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="161" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="162" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BruteCollinearPoints.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="163" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
