@@ -52,10 +52,6 @@ public class FastCollinearPoints {
 
     // the line segments
     public LineSegment[] segments() {
-        /*
-         * Fix horizontal lines
-         * Fix lines that have the same slope but different beginning and end points (parallels)
-         * */
         ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
         Point origin;
         Point[] originSort;
@@ -94,14 +90,6 @@ public class FastCollinearPoints {
             }
         };
     }
-
-    // private Comparator<PointWithOriginSlope> pointComparator() {
-    //     return new Comparator<PointWithOriginSlope>() {
-    //         public int compare(PointWithOriginSlope p1, PointWithOriginSlope p2) {
-    //             return p1.point.compareTo(p2.point);
-    //         }
-    //     };
-    // }
 
     private Comparator<PointWithOriginSlope> slopeComparator() {
         return new Comparator<PointWithOriginSlope>() {
