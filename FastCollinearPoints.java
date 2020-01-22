@@ -65,8 +65,6 @@ public class FastCollinearPoints {
             }
             ArrayList<Point> toOriginSort = new ArrayList<Point>();
             double prevSlope = 0.0;
-            Arrays.sort(this.points);
-
             for (int n = 0; n < pointsClone.length; n++) {
                 double currSlope = origin.slopeTo(pointsClone[n]);
                 if (n == 0 || prevSlope != currSlope || n == this.points.length - 1) {
