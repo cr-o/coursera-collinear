@@ -17,10 +17,10 @@ public class BruteCollinearPoints {
     private Point[] points;
 
     public BruteCollinearPoints(Point[] points) {
-        if (points.length == 0) {
+        if (points == null || points.length == 0) {
             throw new IllegalArgumentException("illegal point argument");
         }
-        this.points = points;
+        this.points = points.clone();
         for (int i = 0; i < this.points.length; i++) {
             for (int n = 0; n < i; n++) {
                 if (points[n] == null) {
@@ -48,10 +48,13 @@ public class BruteCollinearPoints {
         Point[] pointsCopy = this.points.clone();
         Arrays.sort(pointsCopy);
         for (int i = 0; i < pointsLength; i++) {
-            System.out.printf(pointsCopy[i].toString());
+            // System.out.printf(pointsCopy[i].toString());
             for (int j = i + 1; j < pointsLength; j++) {
                 for (int k = j + 1; k < pointsLength; k++) {
                     for (int m = k + 1; m < pointsLength; m++) {
+                        if (points[i] == null) {
+                            throw new IllegalArgumentException("null point argument");
+                        }
                         // three slopes between p and q, between p and r, and between p and s are all equal.
                         firstSlope = pointsCopy[i].slopeTo(pointsCopy[j]);
                         secondSlope = pointsCopy[i].slopeTo(pointsCopy[k]);

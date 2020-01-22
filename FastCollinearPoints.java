@@ -17,10 +17,10 @@ public class FastCollinearPoints {
     private Point[] points;
 
     public FastCollinearPoints(Point[] points) {
-        if (points.length == 0) {
+        if (points == null || points.length == 0) {
             throw new IllegalArgumentException("illegal point argument");
         }
-        this.points = points;
+        this.points = points.clone();
         for (int i = 0; i < this.points.length; i++) {
             for (int n = 0; n < i; n++) {
                 if (points[n] == null) {
@@ -55,22 +55,30 @@ public class FastCollinearPoints {
         ArrayList<LineSegment> lineSegments = new ArrayList<LineSegment>();
         Point origin;
         Point[] originSort;
+        Arrays.sort(this.points);
         for (int i = 0; i < this.points.length; i++) {
             Point[] pointsClone = this.points.clone();
             Arrays.sort(pointsClone, pointsClone[i].slopeOrder());
             origin = this.points[i];
+            if (origin == null) {
+                throw new IllegalArgumentException("null point argument");
+            }
             ArrayList<Point> toOriginSort = new ArrayList<Point>();
             double prevSlope = 0.0;
+            Arrays.sort(this.points);
+
             for (int n = 0; n < pointsClone.length; n++) {
                 double currSlope = origin.slopeTo(pointsClone[n]);
                 if (n == 0 || prevSlope != currSlope || n == this.points.length - 1) {
-
                     if (toOriginSort.size() >= 3) {
                         originSort = toOriginSort.toArray(new Point[toOriginSort.size()]);
                         Arrays.sort(originSort, pointComparator());
                         // System.out.printf("line made\n");
-                        lineSegments.add(new LineSegment(originSort[0],
-                                                         originSort[originSort.length - 1]));
+                        LineSegment line = new LineSegment(originSort[0],
+                                                           originSort[originSort.length - 1]);
+                        if (!lineSegments.contains(line)) {
+                            lineSegments.add(line);
+                        }
                     }
                     toOriginSort = new ArrayList<Point>();
                 }
