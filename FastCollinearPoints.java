@@ -60,34 +60,28 @@ public class FastCollinearPoints {
         Point origin;
         Point[] originSort;
         for (int i = 0; i < this.points.length; i++) {
-            Arrays.sort(this.points, this.points[i].slopeOrder());
+            Point[] pointsClone = this.points.clone();
+            Arrays.sort(pointsClone, pointsClone[i].slopeOrder());
             origin = this.points[i];
             ArrayList<Point> toOriginSort = new ArrayList<Point>();
             double prevSlope = 0.0;
-            for (int n = 0; n < this.points.length; n++) {
-                double currSlope = origin.slopeTo(this.points[n]);
+            for (int n = 0; n < pointsClone.length; n++) {
+                double currSlope = origin.slopeTo(pointsClone[n]);
                 if (n == 0 || prevSlope != currSlope || n == this.points.length - 1) {
-                    // if (!toOriginSort.contains(this.points[n])) {
-                    //}
-                    // if (!toOriginSort.contains(this.points[n + 1])) {
-                    // }
+
                     if (toOriginSort.size() >= 3) {
                         originSort = toOriginSort.toArray(new Point[toOriginSort.size()]);
                         Arrays.sort(originSort, pointComparator());
-                        System.out.printf("line made");
+                        // System.out.printf("line made\n");
                         lineSegments.add(new LineSegment(originSort[0],
                                                          originSort[originSort.length - 1]));
                     }
                     toOriginSort = new ArrayList<Point>();
                 }
 
-                toOriginSort.add(this.points[n]);
+                toOriginSort.add(pointsClone[n]);
 
                 prevSlope = currSlope;
-
-                System.out.printf("counter: %d\n", toOriginSort.size());
-                System.out.printf("origin: %s\n", origin.toString());
-                System.out.printf("point: %s\n", this.points[n].toString());
             }
         }
         return lineSegments.toArray(new LineSegment[lineSegments.size()]);
