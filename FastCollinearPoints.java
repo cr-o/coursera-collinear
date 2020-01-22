@@ -67,11 +67,13 @@ public class FastCollinearPoints {
             double prevSlope = 0.0;
             for (int n = 0; n < pointsClone.length; n++) {
                 double currSlope = origin.slopeTo(pointsClone[n]);
+                if (n == this.points.length - 1 && prevSlope == currSlope) {
+                    toOriginSort.add(pointsClone[n]);
+                }
                 if (n == 0 || prevSlope != currSlope || n == this.points.length - 1) {
                     if (toOriginSort.size() >= 3) {
                         originSort = toOriginSort.toArray(new Point[toOriginSort.size()]);
                         Arrays.sort(originSort, pointComparator());
-                        // System.out.printf("line made\n");
                         LineSegment line = new LineSegment(originSort[0],
                                                            originSort[originSort.length - 1]);
                         if (!lineSegments.contains(line)) {
@@ -80,9 +82,7 @@ public class FastCollinearPoints {
                     }
                     toOriginSort = new ArrayList<Point>();
                 }
-
                 toOriginSort.add(pointsClone[n]);
-
                 prevSlope = currSlope;
             }
         }
