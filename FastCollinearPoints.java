@@ -58,6 +58,8 @@ public class FastCollinearPoints {
         Arrays.sort(this.points);
         for (int i = 0; i < this.points.length; i++) {
             Point[] pointsClone = this.points.clone();
+            Arrays.sort(pointsClone);
+
             Arrays.sort(pointsClone, pointsClone[i].slopeOrder());
             origin = this.points[i];
             if (origin == null) {
@@ -74,11 +76,13 @@ public class FastCollinearPoints {
                     if (toOriginSort.size() >= 3) {
                         originSort = toOriginSort.toArray(new Point[toOriginSort.size()]);
                         Arrays.sort(originSort, pointComparator());
-                        LineSegment line = new LineSegment(originSort[0],
-                                                           originSort[originSort.length - 1]);
-                        if (!lineSegments.contains(line)) {
+                        if (originSort[0].compareTo(origin) > 0) {
+                            LineSegment line = new LineSegment(origin,
+                                                               originSort[originSort.length - 1]);
                             lineSegments.add(line);
                         }
+
+
                     }
                     toOriginSort = new ArrayList<Point>();
                 }
